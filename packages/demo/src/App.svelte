@@ -3,17 +3,17 @@
 </script>
 
 <main>
-  <h1>Hello World!</h1>
-  <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+  <h1>Porton Components Demo</h1>
+  <hr />
 
-  <p class="container">
+  <div class="container">
+    <small>&lt;my-clock&gt;</small>
     <my-clock></my-clock>
-  </p>
+  </div>
 </main>
 
 <style>
   main {
-    text-align: center;
     padding: 1em;
     max-width: 240px;
     margin: 0 auto;
@@ -21,9 +21,15 @@
 
   h1 {
     color: #ff3e00;
-    font-size: 4em;
+    font-size: 3em;
     line-height: 1.1;
     font-weight: 100;
+    margin-bottom: 0;
+  }
+
+  hr {
+    margin-bottom: 4rem;
+    opacity: 0.1;
   }
 
   @media (min-width: 640px) {
@@ -32,7 +38,7 @@
     }
 
     .container {
-      display: inline-block;
+      margin: 0 auto;
       max-width: 320px;
     }
   }

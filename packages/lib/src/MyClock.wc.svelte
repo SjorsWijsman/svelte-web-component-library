@@ -3,6 +3,8 @@
 <script>
   import { onMount } from 'svelte';
 
+  export let color = "red";
+
   let time = new Date();
 
   // these automatically update when `time`
@@ -69,9 +71,9 @@
   />
 
   <!-- second hand -->
-  <g transform='rotate({6 * seconds})'>
+  <g transform='rotate({6 * seconds})' stroke={color}>
     <line class='second' y1='10' y2='-38'/>
-    <line class='second-counterweight' y1='10' y2='2'/>
+    <line class='second-counterweight' y1='10' y2='2' />
   </g>
 </svg>
 
@@ -108,10 +110,6 @@
 
   .minute {
     stroke: #666;
-  }
-
-  .second, .second-counterweight {
-    stroke: rgb(180,0,0);
   }
 
   .second-counterweight {
