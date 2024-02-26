@@ -92,7 +92,7 @@ By default this template will build all components into a single module.
 
 If you prefer to build each component into its own module, you can do so by setting the environment variable `BUNDLE_COMPONENTS` to `false`, or editing `vite.config.js` and setting the `bundleComponents` option to `false`.
 
-Then you also need to replace the content of `packages/lib/index.ts` with:
+Then you also need to replace the content of `packages/lib/index.js` with:
 
 ```js
 export default () => {
@@ -116,8 +116,8 @@ HMR state preservation comes with a number of gotchas! It has been disabled by d
 
 If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
 
-```ts
-// store.ts
+```js
+// store.js
 // An extremely simple external store
 import { writable } from 'svelte/store'
 export default writable(0)

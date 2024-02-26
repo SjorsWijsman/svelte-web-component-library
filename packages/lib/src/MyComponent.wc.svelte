@@ -1,6 +1,6 @@
 <svelte:options tag="my-component"/>
 
-<script lang="ts">
+<script>
   import { onMount } from 'svelte';
 
   let time = new Date();
@@ -74,7 +74,7 @@
   }
 
   .clock-face {
-    stroke: #333;
+    stroke: var(--color-red);
     fill: white;
   }
 

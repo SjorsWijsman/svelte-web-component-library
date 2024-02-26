@@ -13,11 +13,11 @@ export default defineConfig({
   },
   plugins: [
     svelte({
-      exclude: /\.wc\.svelte$/ as any,
+      exclude: /\.wc\.svelte$/,
       hot: false
     }),
     svelte({
-      include: /\.wc\.svelte$/ as any,
+      include: /\.wc\.svelte$/,
       hot: false,
       compilerOptions: {
         customElement: true

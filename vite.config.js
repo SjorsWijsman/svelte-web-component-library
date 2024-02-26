@@ -12,8 +12,8 @@ export default defineConfig({
     outDir: '../../dist/lib',
     emptyOutDir: true,
     lib: {
-      entry: './index.ts',
-      formats: bundleComponents ? ['es', 'esm', 'umd'] as any : ['es'],
+      entry: './index.js',
+      formats: bundleComponents ? ['es', 'esm', 'umd'] : ['es'],
       name: pkg.name.replace(/-./g, (char) => char[1].toUpperCase()),
       fileName: (format) => ({
         es: `${pkg.name}.js`,
@@ -31,13 +31,13 @@ export default defineConfig({
   },
   plugins: [
     svelte({
-      exclude: /\.wc\.svelte$/ as any,
+      exclude: /\.wc\.svelte$/,
       compilerOptions: {
         customElement: false
       }
     }),
     svelte({
-      include: /\.wc\.svelte$/ as any,
+      include: /\.wc\.svelte$/,
     }),
     minifyEs()
   ]
@@ -48,7 +48,7 @@ function minifyEs() {
   return {
     name: 'minifyEs',
     renderChunk: {
-      order: 'post' as const,
+      order: 'post',
       async handler(code, chunk, outputOptions) {
         if (outputOptions.format === 'es' && (!bundleComponents || chunk.fileName.endsWith('.min.js'))) {
           return await transform(code, { minify: true });
