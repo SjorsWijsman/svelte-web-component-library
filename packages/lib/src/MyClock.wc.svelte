@@ -1,4 +1,4 @@
-<svelte:options tag="my-component"/>
+<svelte:options tag="my-clock"/>
 
 <script>
   import { onMount } from 'svelte';
@@ -21,6 +21,14 @@
     };
   });
 </script>
+
+<slot name ="header">
+  <h1>Default header</h1>
+</slot>
+
+<slot>
+  <p>Default content</p>
+</slot>
 
 <svg viewBox='-50 -50 100 100'>
   <circle class='clock-face' r='48'/>
@@ -66,6 +74,12 @@
     <line class='second-counterweight' y1='10' y2='2'/>
   </g>
 </svg>
+
+<slot name="footer">
+  <p>
+    Default footer
+  </p>
+</slot>
 
 <style>
   svg {
