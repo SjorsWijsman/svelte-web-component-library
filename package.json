@@ -1,27 +1,28 @@
 {
-  "name": "svelte-web-components",
-  "description": "A base template for building a shareable web components library with Vite + Svelte",
-  "version": "0.0.0",
-  "type": "module",
-  "module": "dist/lib/svelte-web-components.js",
-  "main": "dist/lib/svelte-web-components.umd.js",
-  "scripts": {
-    "start": "npm run dev -s",
-    "dev": "vite --config vite.demo.config.js",
-    "build": "vite build",
-    "build:demo": "vite build --config vite.demo.config.js",
-    "preview": "vite preview --config vite.demo.config.js",
-    "prepublishOnly": "npm run build -s"
-  },
-  "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.0.2",
-    "@tsconfig/svelte": "^3.0.0",
-    "svelte": "^3.52.0",
-    "svelte-check": "^3.0.3",
-    "svelte-preprocess": "^5.0.1",
-    "vite": "^4.0.4"
-  },
-  "files": [
-    "dist/lib"
-  ]
+    "name": "svelte-web-components",
+    "description": "A base template for building a shareable web components library with Vite + Svelte",
+    "version": "0.0.0",
+    "type": "module",
+    "module": "dist/lib/svelte-web-components.js",
+    "main": "dist/lib/svelte-web-components.umd.js",
+    "scripts": {
+        "start": "npm run dev -s",
+        "dev": "vite --config vite.demo.config.js",
+        "build": "vite build",
+        "build:demo": "vite build --config vite.demo.config.js",
+        "preview": "vite preview --config vite.demo.config.js",
+        "prepublishOnly": "npm run build -s"
+    },
+    "devDependencies": {
+        "@sveltejs/vite-plugin-svelte": "^2.0.2",
+        "@tsconfig/svelte": "^3.0.0",
+        "normalize.css": "^8.0.1",
+        "svelte": "^3.52.0",
+        "svelte-check": "^3.0.3",
+        "svelte-preprocess": "^5.0.1",
+        "vite": "^4.0.4"
+    },
+    "files": [
+        "dist/lib"
+    ]
 }
