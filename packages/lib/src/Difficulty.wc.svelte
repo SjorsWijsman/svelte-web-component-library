@@ -22,12 +22,16 @@
 <p style:color={difficulties[difficulty]?.color}>
     {difficulties[difficulty]?.title}
 </p>
+<slot />
 
 <style lang="scss">
     @use "../../lib/src/style/mixins.scss" as *;
 
-    p {
+    * {
         @include reset;
+    }
+
+    p {
         @include p;
     }
 </style>

@@ -26,48 +26,13 @@
 </a>
 
 <style lang="scss">
-    @use "../../lib/src/style/variables.scss" as *;
+    @use "../../lib/src/style/mixins.scss" as *;
+
+    * {
+        @include reset;
+    }
 
     a {
-        color: var(--color);
-        background-color: var(--background);
-        text-decoration: none;
-        font-weight: 300;
-        opacity: 0.6;
-        font-size: 0.9rem;
-        vertical-align: middle;
-    }
-
-    a.button {
-        opacity: 1;
-        --color: var(--color-text);
-        --background: var(--color-background);
-        display: inline-flex;
-        align-items: center;
-        justify-content: flex-start;
-        border: 0px solid transparent;
-        touch-action: manipulation;
-        cursor: pointer;
-        color: var(--color);
-        background-color: var(--background);
-        padding: 0.5rem 1rem;
-        height: 2.6rem;
-        border-radius: 0.5rem;
-    }
-
-    a.center {
-        margin: 0 auto;
-        text-align: center;
-        opacity: 0.8;
-    }
-
-    a :global(svg) {
-        font-size: 1em;
-        position: relative;
-        display: inline;
-        width: 1.25em;
-        height: 1.25em;
-        left: -0.4em;
-        transition: transform 0.2s ease-out;
+        @include a;
     }
 </style>

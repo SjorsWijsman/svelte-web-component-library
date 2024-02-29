@@ -31,19 +31,38 @@
 }
 
 @mixin a {
+    --color: $colorText;
+    --background: $colorBackground;
+    color: var(--color);
+    background-color: var(--background);
+    text-decoration: none;
+    font-weight: 300;
+    opacity: 0.6;
+    font-size: 0.9rem;
+    vertical-align: middle;
+
+    &.button {
+        @include button;
+        opacity: 1;
+    }
+
+    &.center {
+        margin: 0 auto;
+        text-align: center;
+    }
 }
 
 @mixin button {
     --color: $colorText;
     --background: $colorBackground;
+    color: var(--color);
+    background-color: var(--background);
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
     border: 0px solid transparent;
     touch-action: manipulation;
     cursor: pointer;
-    color: var(--color);
-    background-color: var(--background);
     padding: 0.5rem 1rem;
     height: 2.6rem;
     border-radius: 0.5rem;
@@ -56,15 +75,20 @@
 
 @mixin input {
     border: 1px solid $colorOutline;
+    color: $colorText;
     background-color: hsla(0, 0%, 100%, 0.05);
     padding: 1rem;
     border-radius: 0.25rem;
 
-    @if & == input {
+    &:is(input) {
         height: 2.6rem;
     }
 
-    @if & == select {
+    &:is(select) {
+        & option {
+            color: $colorBackground;
+            background-color: $colorText;
+        }
     }
 
     &::placeholder {

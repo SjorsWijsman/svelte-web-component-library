@@ -43,8 +43,7 @@ a {
     @include a;
 }
 
-button,
-a.button {
+button {
     @include button;
 }
 

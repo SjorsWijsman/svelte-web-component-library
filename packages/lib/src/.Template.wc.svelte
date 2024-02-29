@@ -20,7 +20,7 @@
 <style lang="scss">
     @use "../../lib/src/style/mixins.scss" as *;
 
-    // scss includes are added for consistent global styling
+    // scss mixins are included for consistent global styling
     * {
         @include reset;
     }
