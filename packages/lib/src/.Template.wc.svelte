@@ -6,7 +6,7 @@
     5. Develop the component
     6. Add component to bundle by running: `npm run build`
 -->
-<svelte:options tag="porton-NAME" />
+<svelte:options customElement="porton-NAME" />
 
 <script>
     // JavaScript goes here

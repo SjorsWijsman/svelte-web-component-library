@@ -8,7 +8,7 @@
 <input bind:value={slot.content} on:change={onupdate} on:input={onupdate} />
 
 <style lang="scss">
-    @use "../../lib/src/style/variables.scss" as *;
+    @use "../../../lib/src/style/variables.scss" as *;
 
     hr {
         width: 100%;

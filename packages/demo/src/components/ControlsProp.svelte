@@ -12,7 +12,7 @@
 </select>
 
 <style lang="scss">
-    @use "../../lib/src/style/variables.scss" as *;
+    @use "../../../lib/src/style/variables.scss" as *;
 
     hr {
         width: 100%;

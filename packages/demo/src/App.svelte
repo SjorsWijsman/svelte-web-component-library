@@ -1,40 +1,7 @@
 <script>
     import * as library from "../../lib";
-    import ComponentContainer from "./ComponentContainer.svelte";
-
-    const componentList = [
-        {
-            title: "porton-difficulty",
-            props: [
-                {
-                    title: "difficulty",
-                    options: [0, 1, 2],
-                    selected: 0,
-                },
-            ],
-        },
-        {
-            title: "porton-link",
-            props: [
-                {
-                    title: "href",
-                    options: ["https://www.porton.nl"],
-                    selected: "https://www.porton.nl",
-                },
-                {
-                    title: "button",
-                    options: [true, false],
-                    selected: false,
-                },
-            ],
-            slots: [
-                {
-                    title: "default",
-                    content: "Porton",
-                },
-            ],
-        },
-    ];
+    import componentList from "./webComponentList";
+    import ComponentContainer from "./components/ComponentContainer.svelte";
 </script>
 
 <main>

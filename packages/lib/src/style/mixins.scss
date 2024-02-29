@@ -3,7 +3,7 @@
 @mixin reset {
     font-family: $fontMain;
     color: $colorText;
-    font-size: 1rem;
+    font-size: inherit;
     font-weight: 300;
     line-height: 1.3em;
     padding: 0;

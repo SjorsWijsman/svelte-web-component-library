@@ -6,7 +6,7 @@
     export let props = [];
     export let slots = [];
 
-    let active = true;
+    let active = false;
 
     let componentProps = "";
     let componentSlots = "";
@@ -36,33 +36,31 @@
         <h2>{title.split("-").slice(1).join(" ")}</h2>
         <p>{`<${title} />`}</p>
     </button>
-    {#if active}
-        <div class="controls">
-            {#if props.length}
-                <div class="props">
-                    <h3>Props</h3>
-                    {#each props as prop}
-                        <ControlsProp bind:prop onupdate={updateProps} />
-                    {/each}
-                </div>
-            {/if}
-            {#if slots.length}
-                <div class="slots">
-                    <h3>Slots</h3>
-                    {#each slots as slot}
-                        <ControlsSlot bind:slot onupdate={updateSlots} />
-                    {/each}
-                </div>
-            {/if}
-        </div>
-        <div class="component">
-            {@html `<${title} ${componentProps}>${componentSlots}</${title}>`}
-        </div>
-    {/if}
+    <div class="controls" class:active>
+        {#if props.length}
+            <div class="props">
+                <h3>Props</h3>
+                {#each props as prop}
+                    <ControlsProp bind:prop onupdate={updateProps} />
+                {/each}
+            </div>
+        {/if}
+        {#if slots.length}
+            <div class="slots">
+                <h3>Slots</h3>
+                {#each slots as slot}
+                    <ControlsSlot bind:slot onupdate={updateSlots} />
+                {/each}
+            </div>
+        {/if}
+    </div>
+    <div class="component">
+        {@html `<${title} ${componentProps}>${componentSlots}</${title}>`}
+    </div>
 </section>
 
 <style lang="scss">
-    @use "../../lib/src/style/variables.scss" as *;
+    @use "../../../lib/src/style/variables.scss" as *;
 
     h2 {
         font-size: 1rem;
@@ -90,8 +88,7 @@
         height: unset;
         border-radius: 0;
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        gap: 0.5rem;
     }
 
     .title p {
@@ -100,9 +97,13 @@
     }
 
     .controls {
+        display: none;
         background-color: rgba($colorText, 0.1);
-        display: grid;
         grid-template-columns: 1fr 1fr;
+
+        &.active {
+            display: grid;
+        }
     }
 
     .props,
