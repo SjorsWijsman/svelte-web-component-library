@@ -1,5 +1,4 @@
-import "./src/style/global.css";
-import "./src/style/normalize.css";
+import "./src/style/global.scss";
 
-export { default as MyClock } from "./src/MyClock.wc.svelte";
-export { default as MyButton } from "./src/MyButton.wc.svelte";
+export { default as Difficulty } from "./src/Difficulty.wc.svelte";
+export { default as Link } from "./src/Link.wc.svelte";

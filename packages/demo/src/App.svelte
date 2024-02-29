@@ -1,26 +1,58 @@
 <script>
-    import "../../lib";
+    import * as library from "../../lib";
     import ComponentContainer from "./ComponentContainer.svelte";
+
+    const componentList = [
+        {
+            title: "porton-difficulty",
+            props: [
+                {
+                    title: "difficulty",
+                    options: [0, 1, 2],
+                    selected: 0,
+                },
+            ],
+        },
+        {
+            title: "porton-link",
+            props: [
+                {
+                    title: "href",
+                    options: ["https://www.porton.nl"],
+                    selected: "https://www.porton.nl",
+                },
+                {
+                    title: "button",
+                    options: [true, false],
+                    selected: false,
+                },
+            ],
+            slots: [
+                {
+                    title: "default",
+                    content: "Porton",
+                },
+            ],
+        },
+    ];
 </script>
 
 <main>
     <h1>Porton Components Demo</h1>
     <hr />
 
-    <ComponentContainer title="my-clock">
-        <my-clock>
-            <h2 slot="header">[h2] header</h2>
-            <p>Content</p>
-            <small slot="footer">[small] footer</small>
-        </my-clock>
-    </ComponentContainer>
-
-    <ComponentContainer title="my-button">
-        <my-button></my-button>
-    </ComponentContainer>
+    {#each componentList as component}
+        <ComponentContainer
+            title={component.title}
+            props={component.props}
+            slots={component.slots}
+        />
+    {/each}
 </main>
 
-<style>
+<style lang="scss">
+    @use "../../lib/src/style/variables.scss" as *;
+
     h1 {
         margin-bottom: 1rem;
     }

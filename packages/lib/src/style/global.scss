@@ -1,0 +1,59 @@
+@import "./mixins.scss";
+
+:root {
+    background-color: $colorBackground;
+    scroll-behavior: smooth;
+}
+
+html {
+    font-size: max(13px, calc(60% + 0.8vmin));
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    padding-bottom: 16rem;
+    max-width: $widthContent;
+    margin: 0 auto;
+}
+
+* {
+    @include reset;
+}
+
+h1 {
+    @include h1;
+}
+
+h2 {
+    @include h2;
+}
+
+h3 {
+    @include h3;
+}
+
+p {
+    @include p;
+}
+
+a {
+    @include a;
+}
+
+button,
+a.button {
+    @include button;
+}
+
+input,
+textarea,
+select {
+    @include input;
+}
+
+label {
+    @include label;
+}
