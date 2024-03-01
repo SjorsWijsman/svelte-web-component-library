@@ -11,6 +11,17 @@ export const components = [
     },
 
     {
+        title: "porton-layout",
+        slots: [
+            {
+                title: "default",
+                content:
+                    "<span>Col 1</span><span>Col 2</span><span>Col 3</span>",
+            },
+        ],
+    },
+
+    {
         title: "porton-link",
         props: [
             {

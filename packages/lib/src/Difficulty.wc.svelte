@@ -21,8 +21,8 @@
 
 <p style:color={difficulties[difficulty]?.color}>
     {difficulties[difficulty]?.title}
+    <slot />
 </p>
-<slot />
 
 <style lang="scss">
     @use "../../lib/src/style/mixins.scss" as *;

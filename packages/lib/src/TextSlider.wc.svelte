@@ -6,7 +6,7 @@
 
     export let textlist;
 
-    let text = textlist.split(",");
+    let text = `${textlist}`.split(",");
     let slide = 0;
     let displayedText = text[0];
 
