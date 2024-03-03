@@ -4,7 +4,7 @@
 </script>
 
 <hr />
-<label for={slot.title}>{slot.title}</label>
+<label for={slot.name}>{slot.name}</label>
 <input bind:value={slot.content} on:change={onupdate} on:input={onupdate} />
 
 <style lang="scss">

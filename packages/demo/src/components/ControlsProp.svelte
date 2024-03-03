@@ -4,8 +4,8 @@
 </script>
 
 <hr />
-<label for={prop.title}>{prop.title}</label>
-<select id={prop.title} bind:value={prop.selected} on:change={onupdate}>
+<label for={prop.name}>{prop.name}</label>
+<select id={prop.name} bind:value={prop.selected} on:change={onupdate}>
     {#each prop.options as option}
         <option value={option}>{option}</option>
     {/each}

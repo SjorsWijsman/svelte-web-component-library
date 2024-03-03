@@ -3,7 +3,7 @@ export const components = [
         title: "porton-difficulty",
         props: [
             {
-                title: "difficulty",
+                name: "difficulty",
                 options: [0, 1, 2],
                 selected: 0,
             },
@@ -14,7 +14,7 @@ export const components = [
         title: "porton-layout",
         slots: [
             {
-                title: "default",
+                name: "default",
                 content:
                     "<span>Col 1</span><span>Col 2</span><span>Col 3</span>",
             },
@@ -25,19 +25,19 @@ export const components = [
         title: "porton-link",
         props: [
             {
-                title: "href",
+                name: "href",
                 options: ["https://www.porton.nl"],
                 selected: "https://www.porton.nl",
             },
             {
-                title: "button",
+                name: "button",
                 options: [true, false],
                 selected: false,
             },
         ],
         slots: [
             {
-                title: "default",
+                name: "default",
                 content: "Porton",
             },
         ],
@@ -47,7 +47,7 @@ export const components = [
         title: "porton-text-slider",
         props: [
             {
-                title: "textlist",
+                name: "textlist",
                 options: ["hoi,hoi2,hoi3,hoi4"],
                 selected: ["hoi,hoi2,hoi3,hoi4"],
             },
