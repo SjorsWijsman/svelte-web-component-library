@@ -53,6 +53,10 @@ export const components = [
             },
         ],
     },
+
+    {
+        title: "porton-spinner",
+    },
 ];
 
 export default components;

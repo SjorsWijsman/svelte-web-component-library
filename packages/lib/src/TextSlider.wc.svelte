@@ -10,8 +10,6 @@
     let slide = 0;
     let displayedText = text[0];
 
-    let sliderHeight, sliderWidth;
-
     onMount(() => {
         window.setInterval(() => {
             slide++;
@@ -21,18 +19,12 @@
     });
 </script>
 
-<span
-    class="container"
-    style:height={`${sliderHeight}px`}
-    style:width={`${sliderWidth}px`}
->
+<span class="container" style:height={`calc(1em - 1px)`}>
     {#key displayedText}
         <span
             class="slider"
             in:fly={{ y: 40, duration: 700 }}
             out:fly={{ y: -40, duration: 500 }}
-            bind:clientHeight={sliderHeight}
-            bind:clientWidth={sliderWidth}
         >
             {displayedText}
         </span>
@@ -48,10 +40,9 @@
 
     .container {
         position: relative;
-        display: inline-block;
     }
 
-    .slider {
+    .container .slider {
         position: absolute;
         font-size: inherit;
         font-weight: 750;
