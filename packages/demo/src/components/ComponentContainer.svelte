@@ -15,7 +15,7 @@
         componentProps = "";
         for (let prop of props) {
             if (prop.selected) {
-                componentProps += `${prop.title}="${prop.selected}" `;
+                componentProps += `${prop.name}="${prop.selected}" `;
             }
         }
     }

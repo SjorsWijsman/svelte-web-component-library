@@ -16,16 +16,3 @@
         />
     {/each}
 </main>
-
-<style lang="scss">
-    @use "../../lib/src/style/variables.scss" as *;
-
-    h1 {
-        margin-bottom: 1rem;
-    }
-
-    hr {
-        margin-bottom: 4rem;
-        opacity: 0.1;
-    }
-</style>
