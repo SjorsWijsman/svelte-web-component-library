@@ -41,6 +41,13 @@ export default defineConfig({
         }),
         svelte({
             include: /\.wc\.svelte$/,
+            onwarn: (warning, handler) => {
+                const { code, frame } = warning;
+                if (code === "css-unused-selector")
+                    return;
+        
+                handler(warning);
+            },
         }),
         minifyEs(),
     ],
