@@ -32,11 +32,8 @@
 </span>
 
 <style lang="scss">
-    @use "../../lib/src/style/mixins.scss" as *;
-
-    * {
-        @include reset;
-    }
+    // import global style for consistent styling, any unused selectors are automatically removed
+    @import "../../lib/src/style/global.scss";
 
     .container {
         position: relative;

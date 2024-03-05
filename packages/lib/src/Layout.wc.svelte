@@ -1,20 +1,12 @@
 <svelte:options customElement="porton-layout" />
 
-<script>
-    console.log("hi im layout");
-</script>
-
 <div>
     <slot />
 </div>
 
 <style lang="scss">
-    @use "../../lib/src/style/mixins.scss" as *;
-
-    // scss mixins are included for consistent global styling
-    * {
-        @include reset;
-    }
+    // import global style for consistent styling, any unused selectors are automatically removed
+    @import "../../lib/src/style/global.scss";
 
     // Style goes here
     div {

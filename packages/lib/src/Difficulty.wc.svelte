@@ -25,13 +25,6 @@
 </p>
 
 <style lang="scss">
-    @use "../../lib/src/style/mixins.scss" as *;
-
-    * {
-        @include reset;
-    }
-
-    p {
-        @include p;
-    }
+    // import global style for consistent styling, any unused selectors are automatically removed
+    @import "../../lib/src/style/global.scss";
 </style>

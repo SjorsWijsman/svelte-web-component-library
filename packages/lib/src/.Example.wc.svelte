@@ -7,7 +7,7 @@
     6. Develop the component
     7. Add component to bundle by running: `npm run build`
 -->
-<svelte:options customElement="porton-TEMPLATE" />
+<svelte:options customElement="porton-example" />
 
 <script>
     // JavaScript goes here
@@ -20,16 +20,11 @@
 </p>
 
 <style lang="scss">
-    @use "../../lib/src/style/mixins.scss" as *;
-
-    // scss mixins are included for consistent global styling
-    * {
-        @include reset;
-    }
-
-    p {
-        @include p;
-    }
+    // import global style for consistent styling, any unused selectors are automatically removed
+    @import "../../lib/src/style/global.scss";
 
     // Style goes here
+    p {
+        color: red;
+    }
 </style>

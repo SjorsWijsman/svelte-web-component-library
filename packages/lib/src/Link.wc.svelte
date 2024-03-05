@@ -9,13 +9,10 @@
 
     export let color = "var(--color-text)";
     export let background = "";
-
-    let component;
 </script>
 
 <a
     {href}
-    bind:this={component}
     class:button
     class:center
     class:secondary
@@ -26,13 +23,6 @@
 </a>
 
 <style lang="scss">
-    @use "../../lib/src/style/mixins.scss" as *;
-
-    * {
-        @include reset;
-    }
-
-    a {
-        @include a;
-    }
+    // import global style for consistent styling, any unused selectors are automatically removed
+    @import "../../lib/src/style/global.scss";
 </style>
