@@ -26,7 +26,11 @@
     }
 </script>
 
-<button on:click|stopPropagation={copyToClipboard} class:success>
+<button
+    on:click|stopPropagation={copyToClipboard}
+    class:success
+    title="Copy to Clipboard"
+>
     {@html success ? iconCopySuccess : iconCopy}
 </button>
 

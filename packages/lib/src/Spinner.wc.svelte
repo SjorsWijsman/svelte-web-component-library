@@ -1,19 +1,30 @@
-<svelte:options customElement="porton-spinner" />
+<svelte:options
+    customElement={{
+        tag: "porton-spinner",
+        props: {
+            power: { type: "Number" },
+            damping: { type: "Number" },
+        },
+    }}
+/>
 
 <script>
+    export let power = 3; // added momentum value on click
+    export let damping = 1; // rate of slowing
+
+    const resolution = 100; // amount of times to run per second
+
     let momentum = 0; // stored momentum
     let rotation = 0; // current rotation in deg
 
-    const resolution = 100; // amount of times to run per second
-    const power = 3; // added momentum value on click
-    const damping = 1.01; // rate of slowing
+    $: console.log(typeof resolution);
 
     const interval = setInterval(() => {
         if (momentum) {
             rotation += momentum;
-            if (momentum < 0.01) {
+            if (momentum < 0.01 && momentum > -0.01) {
                 momentum = 0;
-            } else momentum /= damping;
+            } else momentum /= 1 + damping / 100;
         }
     }, 1000 / resolution);
 </script>

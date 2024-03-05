@@ -15,7 +15,15 @@
 {:else if prop.controls === "Boolean"}
     <input type="checkbox" id={name} bind:checked={prop.value} />
 {:else if prop.controls === "Number"}
-    <input type="number" id={name} bind:value={prop.value} />
+    <input
+        type="number"
+        id={name}
+        bind:value={prop.value}
+        min={prop.min}
+        max={prop.max}
+        step={prop.step}
+        placeholder={prop.default}
+    />
 {:else if prop.controls === "Function"}
     <input
         type="button"
@@ -24,7 +32,12 @@
         title={prop.value}
     />
 {:else}
-    <input type="text" id={name} bind:value={prop.value} />
+    <input
+        type="text"
+        id={name}
+        bind:value={prop.value}
+        placeholder={prop.default}
+    />
 {/if}
 
 <style>

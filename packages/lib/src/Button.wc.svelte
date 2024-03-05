@@ -5,7 +5,7 @@
     export let secondary = false;
 </script>
 
-<button on:click={action} class:secondary>
+<button on:click={eval(action)} class:secondary>
     <slot>Button</slot>
 </button>
 

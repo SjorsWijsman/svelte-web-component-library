@@ -2,7 +2,9 @@
     import * as lib from "../../lib";
     import "./demo.scss";
 
+    import { validateComponent } from "./scripts/validateComponent";
     import ComponentContainer from "./components/ComponentContainer.svelte";
+    import iconSearch from "./icons/search.svg?raw";
 
     let componentList = [];
 
@@ -13,39 +15,25 @@
                 validateComponent(
                     name,
                     component,
+                    componentList,
                     () => (componentList = [...componentList, component])
                 );
+                componentList.sort((a, b) => a.title.localeCompare(b.title));
             })
             .catch((error) => {
+                // console.error(error);
                 console.warn(`${name}: Demo file is missing.`);
             });
     }
 
-    function validateComponent(name, component, onValidation) {
-        if (!component.title) {
-            console.error(`${name}: Component has no defined title.`);
-            return false;
-        }
-        if (component.props) {
-            for (let key of Object.keys(component.props)) {
-                let prop = component.props[key];
-                if (prop.controls === "Select") {
-                    if (!prop.options || !Array.isArray(prop.options)) {
-                        console.error(
-                            `${name}: [${key}] Select controls require an options prop as list`
-                        );
-                        return false;
-                    } else if (!prop.options?.length) {
-                        console.error(
-                            `${name}: [${key}] Options list can not be empty`
-                        );
-                        return false;
-                    }
-                }
-            }
-        }
-        onValidation();
-        return true;
+    let searchTerm = "";
+
+    $: componentListFiltered = componentList;
+
+    function search() {
+        componentListFiltered = componentList.filter((component) =>
+            component.title.includes(searchTerm.toLocaleLowerCase())
+        );
     }
 </script>
 
@@ -53,8 +41,17 @@
     <h1>Demo Environment</h1>
     <p>{componentList.length} Components</p>
     <hr />
-
-    {#each componentList as component}
+    <div class="search">
+        {@html iconSearch}
+        <input
+            type="text"
+            bind:value={searchTerm}
+            on:input={search}
+            placeholder="Search for components"
+        />
+    </div>
+    <hr />
+    {#each componentListFiltered as component (component.title)}
         <ComponentContainer
             title={component.title}
             props={component.props}
@@ -63,12 +60,37 @@
     {/each}
 </main>
 
-<style>
+<style lang="scss">
     h1 {
         font-size: 2rem;
     }
 
     p {
         opacity: 0.7;
+    }
+
+    .search {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        :global(svg) {
+            opacity: 0.5;
+        }
+
+        input {
+            margin: 0;
+            width: 100%;
+            opacity: 0.7;
+            transition: opacity 0.3s ease-out;
+
+            &:focus {
+                opacity: 1;
+            }
+
+            ::placeholder {
+                font-size: 0.7rem;
+            }
+        }
     }
 </style>

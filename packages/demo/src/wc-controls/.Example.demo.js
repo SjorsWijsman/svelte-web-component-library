@@ -10,6 +10,9 @@ const component = {
         count: {
             controls: "Number",
             default: 5, // A default value can be set for any prop
+            min: 0,
+            max: 10,
+            step: 0.5,
         },
         secondary: {
             controls: "Boolean",
@@ -20,7 +23,7 @@ const component = {
         },
         action: {
             controls: "Function",
-            default: () => console.log(`I am a button!`),
+            default: () => window.alert(`I am a button!`),
         },
     },
     slots: {

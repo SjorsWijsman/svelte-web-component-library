@@ -3,7 +3,7 @@ const component = {
     props: {
         action: {
             controls: "Function",
-            default: () => console.log(`I am a button!`),
+            default: () => window.alert(`I am a button!`),
         },
         secondary: {
             controls: "Boolean",
