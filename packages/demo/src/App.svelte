@@ -26,6 +26,24 @@
             console.error(`${name}: Component has no defined title.`);
             return false;
         }
+        if (component.props) {
+            for (let key of Object.keys(component.props)) {
+                let prop = component.props[key];
+                if (prop.controls === "Select") {
+                    if (!prop.options || !Array.isArray(prop.options)) {
+                        console.error(
+                            `${name}: [${key}] Select controls require an options prop as list`
+                        );
+                        return false;
+                    } else if (!prop.options?.length) {
+                        console.error(
+                            `${name}: [${key}] Options list can not be empty`
+                        );
+                        return false;
+                    }
+                }
+            }
+        }
         onValidation();
         return true;
     }
@@ -33,6 +51,7 @@
 
 <main>
     <h1>Demo Environment</h1>
+    <p>{componentList.length} Components</p>
     <hr />
 
     {#each componentList as component}
@@ -47,5 +66,9 @@
 <style>
     h1 {
         font-size: 2rem;
+    }
+
+    p {
+        opacity: 0.7;
     }
 </style>
