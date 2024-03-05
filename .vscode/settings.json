@@ -9,10 +9,11 @@
     "editor.tabSize": 4,
     "editor.detectIndentation": false,
     "prettier.tabWidth": 4,
+    "prettier.htmlWhitespaceSensitivity": "ignore",
     "[svelte]": {
         "editor.defaultFormatter": "svelte.svelte-vscode"
     },
     "svelte.plugin.svelte.compilerWarnings": {
-        "css-unused-selector": "ignore",
+        "css-unused-selector": "ignore"
     }
 }

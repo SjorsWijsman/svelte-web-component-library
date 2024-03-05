@@ -1,36 +1,37 @@
 <script>
+    export let name;
     export let prop;
-    export let onupdate;
+
+    prop.value ??= prop.default;
 </script>
 
-<hr />
-<label for={prop.name}>{prop.name}</label>
-<select id={prop.name} bind:value={prop.selected} on:change={onupdate}>
-    {#each prop.options as option}
-        <option value={option}>{option}</option>
-    {/each}
-</select>
+<label for={name}>{name}</label>
+{#if prop.controls === "Select"}
+    <select id={name} bind:value={prop.value}>
+        {#each prop.options as option}
+            <option value={option}>{option}</option>
+        {/each}
+    </select>
+{:else if prop.controls === "Boolean"}
+    <input type="checkbox" id={name} bind:checked={prop.value} />
+{:else if prop.controls === "Number"}
+    <input type="number" id={name} bind:value={prop.value} />
+{:else if prop.controls === "Function"}
+    <input
+        type="button"
+        on:click={prop.value}
+        value="function()"
+        title={prop.value}
+    />
+{:else}
+    <input type="text" id={name} bind:value={prop.value} />
+{/if}
 
-<style lang="scss">
-    @use "../../../lib/src/style/variables.scss" as *;
-
-    hr {
-        width: 100%;
-        opacity: 0.1;
-        margin: 0.15rem 0 0.25rem;
-    }
-
-    label {
-        font-size: 0.8rem;
-        opacity: 0.7;
-        margin-top: 0.5rem;
-        margin-bottom: 0.1rem;
-    }
-
-    select {
-        font-size: 0.9rem;
-        min-width: 4rem;
-        padding: 0.25rem;
-        margin-bottom: 0.5rem;
+<style>
+    input[type="button"] {
+        font-size: 1rem;
+        font-family: "Neuton", serif;
+        font-weight: 400;
+        font-style: italic;
     }
 </style>

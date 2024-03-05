@@ -1,61 +1,93 @@
 <script>
-    import ControlsProp from "./ControlsProp.svelte";
-    import ControlsSlot from "./ControlsSlot.svelte";
+    import Controls from "./Controls.svelte";
+    import iconArrow from "../icons/arrow-down.svg?raw";
+    import iconProps from "../icons/props.svg?raw";
+    import iconSlots from "../icons/slots.svg?raw";
+    import CopyButton from "./CopyButton.svelte";
 
-    export let title;
-    export let props = [];
-    export let slots = [];
+    export let title, props, slots;
 
     let active = false;
 
     let componentProps = "";
     let componentSlots = "";
 
-    function updateProps() {
+    // Update content on prop/slot change
+    $: updatePropContent(props);
+    $: updateSlotContent(slots);
+
+    // Parse prop object to string to pass to component
+    function updatePropContent(props) {
         componentProps = "";
-        for (let prop of props) {
-            if (prop.selected) {
-                componentProps += `${prop.name}="${prop.selected}" `;
+        if (!props) return;
+        for (let prop of Object.keys(props)) {
+            if (props[prop].value) {
+                componentProps += ` ${prop}="${props[prop].value}"`;
             }
         }
     }
 
-    function updateSlots() {
+    // Parse slot object to string to pass inside component
+    function updateSlotContent(slots) {
         componentSlots = "";
-        for (let slot of slots) {
-            componentSlots += slot.content;
+        if (!slots) return;
+        for (let slot of Object.keys(slots)) {
+            if (slot === "default") componentSlots += slots[slot];
+            else componentSlots += `<span slot="${slot}">${slots[slot]}</span>`;
         }
     }
-
-    updateProps();
-    updateSlots();
 </script>
 
 <section>
-    <button class="title" on:click={() => (active = !active)}>
+    <!-- Title Bar -->
+    <button class="title" class:active on:click={() => (active = !active)}>
+        <div class="icon arrow">
+            {@html iconArrow}
+        </div>
+
+        <!-- Component Title -->
         <h2>{title.split("-").slice(1).join(" ")}</h2>
+
+        <!-- Component Raw Title -->
         <p>{`<${title} />`}</p>
+
+        <!-- Prop Count -->
+        <div
+            class="count"
+            class:empty={!props}
+            title="Props"
+            style:margin-left={"auto"}
+        >
+            {@html iconProps}
+            {#if props}
+                {Object.keys(props)?.length}
+            {:else}
+                0
+            {/if}
+        </div>
+
+        <!-- Slot Count -->
+        <div class="count" class:empty={!slots} title="Slots">
+            {@html iconSlots}
+            {#if slots}
+                {Object.keys(slots)?.length}
+            {:else}
+                0
+            {/if}
+        </div>
+
+        <!-- Copy Button -->
+        <CopyButton
+            text={`<${title}${componentProps}>${componentSlots}</${title}>`}
+        />
     </button>
-    <div class="controls" class:active>
-        {#if props.length}
-            <div class="props">
-                <h3>Props</h3>
-                {#each props as prop}
-                    <ControlsProp bind:prop onupdate={updateProps} />
-                {/each}
-            </div>
-        {/if}
-        {#if slots.length}
-            <div class="slots">
-                <h3>Slots</h3>
-                {#each slots as slot}
-                    <ControlsSlot bind:slot onupdate={updateSlots} />
-                {/each}
-            </div>
-        {/if}
-    </div>
+
+    <!-- Controls Section -->
+    <Controls bind:props bind:slots {active} />
+
+    <!-- Component Preview -->
     <div class="component">
-        {@html `<${title} ${componentProps}>${componentSlots}</${title}>`}
+        {@html `<${title}${componentProps}>${componentSlots}</${title}>`}
     </div>
 </section>
 
@@ -63,13 +95,9 @@
     @use "../../../lib/src/style/variables.scss" as *;
 
     h2 {
-        font-size: 1rem;
-        text-transform: capitalize;
-    }
-
-    h3 {
         font-size: 0.9rem;
-        font-weight: normal;
+        text-transform: capitalize;
+        font-weight: 600;
     }
 
     * {
@@ -79,40 +107,84 @@
     section {
         outline: 1px solid rgba($colorText, 0.1);
         margin-bottom: 2rem;
+        transition: outline 0.2s ease-out;
+
+        &:focus-within {
+            outline: 1px solid rgba($colorText, 0.2);
+        }
     }
 
     .title {
-        background-color: rgba($colorText, 0.2);
+        position: relative;
+        background-color: rgba($colorText, 0.1);
         padding: 0.5rem 1rem;
         width: 100%;
         height: unset;
         border-radius: 0;
         display: flex;
         gap: 0.5rem;
-    }
-
-    .title p {
-        font-size: 0.9rem;
-        opacity: 0.7;
-    }
-
-    .controls {
-        display: none;
-        background-color: rgba($colorText, 0.1);
-        grid-template-columns: 1fr 1fr;
+        transition: background-color 0.2s ease-out;
 
         &.active {
-            display: grid;
+            background-color: rgba($colorText, 0.15);
+
+            .icon.arrow {
+                transform: rotate(-180deg);
+            }
+        }
+        &:hover {
+            background-color: rgba($colorText, 0.2);
+        }
+
+        .icon {
+            :global(svg) {
+                width: 100%;
+                height: 100%;
+            }
+
+            &.arrow {
+                opacity: 0.7;
+                width: 0.75rem;
+                height: 1rem;
+                transition: transform 0.2s ease-out;
+            }
+        }
+
+        .count,
+        button {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            background-color: rgba($colorBackground, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.15rem 0.3rem;
+            border-radius: 0.25rem;
+
+            :global(svg) {
+                width: 100%;
+                height: 100%;
+                max-width: 1.25em;
+            }
+
+            &.empty {
+                opacity: 0.4;
+            }
+        }
+
+        button {
+            height: unset;
+            transition: background-color 0.2s ease-out;
+
+            &:hover {
+                background-color: rgba($colorText, 0.1);
+            }
         }
     }
 
-    .props,
-    .slots {
-        padding: 1rem 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        font-size: 0.9rem;
+    .title p {
+        font-size: 0.8rem;
+        opacity: 0.7;
     }
 
     .component {

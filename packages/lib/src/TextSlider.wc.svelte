@@ -4,7 +4,7 @@
     import { onMount } from "svelte";
     import { fly } from "svelte/transition";
 
-    export let textlist;
+    export let textlist = "Lorem,Ipsum,Dolor,Sit,Amet";
 
     let text = `${textlist}`.split(",");
     let slide = 0;

@@ -53,10 +53,8 @@
 }
 
 @mixin button {
-    --color: $colorText;
-    --background: $colorBackground;
-    color: var(--color);
-    background-color: var(--background);
+    color: $colorBackground;
+    background-color: $colorText;
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
@@ -68,7 +66,8 @@
     border-radius: 0.5rem;
 
     &.secondary {
-        border: max(0.125rem, 1px) solid var(--color);
+        color: $colorText;
+        border: 1px solid $colorText;
         background-color: transparent;
     }
 }
@@ -80,15 +79,17 @@
     padding: 1rem;
     border-radius: 0.25rem;
 
-    &:is(input) {
-        height: 2.6rem;
-    }
-
     &:is(select) {
         & option {
             color: $colorBackground;
             background-color: $colorText;
         }
+    }
+
+    &[type="checkbox"] {
+        height: 1rem;
+        width: 1rem;
+        min-width: unset;
     }
 
     &::placeholder {

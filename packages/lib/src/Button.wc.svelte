@@ -1,18 +1,11 @@
-<svelte:options
-    customElement={{
-        tag: "porton-button",
-        props: {
-            action: { type: "String" },
-            secondary: { type: "Boolean" },
-        },
-    }}
-/>
+<svelte:options customElement="porton-button" />
 
 <script>
-    export let action;
+    export let action = () => console.log("I am a button");
+    export let secondary = false;
 </script>
 
-<button on:click={action}>
+<button on:click={action} class:secondary>
     <slot>Button</slot>
 </button>
 
