@@ -3,7 +3,7 @@ const component = {
     title: "porton-button",
     // Props & slots are optional
     props: {
-        // Object key = prop name
+        // Object key = component prop name
         text: {
             controls: "String", // Default
         },
