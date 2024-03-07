@@ -22,7 +22,7 @@
             })
             .catch((error) => {
                 // console.error(error);
-                console.warn(`${name}: Demo file is missing.`);
+                console.warn(`[svelte-wc] ${name}: Demo file is missing.`);
             });
     }
 

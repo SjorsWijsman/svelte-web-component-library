@@ -8,7 +8,7 @@
     "scripts": {
         "start": "npm run dev -s",
         "dev": "vite --config vite.demo.config.js",
-        "prebuild": "node ./export-wc-components.js",
+        "prebuild": "node ./scripts/export-web-components.js",
         "build": "vite build",
         "build:demo": "vite build --config vite.demo.config.js",
         "build:legacy": "npx babel ./dist/svelte-web-components.js --out-file ./dist/svelte-web-components.legacy.js",

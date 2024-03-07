@@ -150,8 +150,7 @@
             }
         }
 
-        .count,
-        button {
+        .count {
             font-size: 0.8rem;
             opacity: 0.7;
             background-color: rgba($colorBackground, 0.5);
@@ -169,15 +168,6 @@
 
             &.empty {
                 opacity: 0.4;
-            }
-        }
-
-        button {
-            height: unset;
-            transition: background-color 0.2s ease-out;
-
-            &:hover {
-                background-color: rgba($colorText, 0.1);
             }
         }
     }

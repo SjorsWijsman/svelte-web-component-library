@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
+import watchWebComponents from "./scripts/watch-web-components";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -29,5 +30,6 @@ export default defineConfig({
                 handler(warning);
             },
         }),
+        watchWebComponents(),
     ],
 });

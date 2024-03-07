@@ -1,5 +1,8 @@
+// This script automatically adds the .wc.svelte exports to the packages/lib/src/index.js file
+
 import fs from "fs";
 import path from "path";
+import { log, error } from "./log.js";
 
 const componentsDirectory = "./packages/lib/src";
 const indexFilePath = "./packages/lib/index.js";
@@ -7,7 +10,7 @@ const indexFilePath = "./packages/lib/index.js";
 // Read the files in the components directory
 fs.readdir(componentsDirectory, (err, files) => {
     if (err) {
-        console.error("Error reading directory:", err);
+        error("Error reading directory", err);
         return;
     }
 
@@ -22,15 +25,19 @@ fs.readdir(componentsDirectory, (err, files) => {
         return `export { default as ${componentName} } from "./src/${file}";`;
     });
 
+    // Additional data
     exportStatements.unshift(`import "./src/style/global.scss";`);
+    exportStatements.unshift(
+        "// These exports are automatically added while running the dev server or before a build"
+    );
 
     // Write export statements to the index file
     const content = exportStatements.join("\n");
     fs.writeFile(indexFilePath, content, (err) => {
         if (err) {
-            console.error("Error writing to index file:", err);
+            error("Error writing to index file", err);
             return;
         }
-        console.log("Index file updated successfully.");
+        log("Library index file updated successfully.");
     });
 });

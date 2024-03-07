@@ -1,3 +1,4 @@
+// These exports are automatically added while running the dev server or before a build
 import "./src/style/global.scss";
 export { default as Button } from "./src/Button.wc.svelte";
 export { default as Difficulty } from "./src/Difficulty.wc.svelte";

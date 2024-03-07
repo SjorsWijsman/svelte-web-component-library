@@ -6,7 +6,7 @@ export function validateComponent(
 ) {
     // Check if component has a defined title
     if (!component.title) {
-        console.error(`${name}: Component has no defined title.`);
+        console.error(`[svelte-wc] ${name}: Component has no defined title.`);
         return false;
     }
 
@@ -17,7 +17,7 @@ export function validateComponent(
         )
     ) {
         console.error(
-            `${name}: Component title (${component.title}) has already been defined`
+            `[svelte-wc] ${name}: Component title (${component.title}) has already been defined`
         );
         return false;
     }
@@ -31,12 +31,12 @@ export function validateComponent(
             if (prop.controls === "Select") {
                 if (!prop.options || !Array.isArray(prop.options)) {
                     console.error(
-                        `${name}: [${key}] Select controls require an options prop as list`
+                        `[svelte-wc] ${name}: [${key}] Select controls require an options prop as list`
                     );
                     return false;
                 } else if (!prop.options?.length) {
                     console.error(
-                        `${name}: [${key}] Options list can not be empty`
+                        `[svelte-wc] ${name}: [${key}] Options list can not be empty`
                     );
                     return false;
                 }
