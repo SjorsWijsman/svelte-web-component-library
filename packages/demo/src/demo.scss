@@ -28,6 +28,10 @@ select {
     border-radius: 0.25rem;
     margin-bottom: 0.5rem;
 
+    &:is(input) {
+        width: 100%;
+    }
+
     &[type="button"] {
         padding: 0.25rem 0.5rem;
         cursor: pointer;

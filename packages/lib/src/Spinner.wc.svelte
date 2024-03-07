@@ -17,8 +17,6 @@
     let momentum = 0; // stored momentum
     let rotation = 0; // current rotation in deg
 
-    $: console.log(typeof resolution);
-
     const interval = setInterval(() => {
         if (momentum) {
             rotation += momentum;

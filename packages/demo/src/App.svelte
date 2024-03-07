@@ -39,7 +39,13 @@
 
 <main>
     <h1>Demo Environment</h1>
-    <p>{componentList.length} Components</p>
+    <p>
+        {componentList.length} Components
+        {#if searchTerm}
+            -
+            {componentListFiltered.length} result
+        {/if}
+    </p>
     <hr />
     <div class="search">
         {@html iconSearch}
@@ -73,6 +79,7 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        font-size: 0.9rem;
 
         :global(svg) {
             opacity: 0.5;
