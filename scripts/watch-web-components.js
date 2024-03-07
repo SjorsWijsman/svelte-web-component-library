@@ -1,4 +1,4 @@
-// Watch changes inside packages/lib/src & run export-web-components to automatically bundle
+// Watch changes inside packages/lib/web-components & run export-web-components to automatically bundle
 
 import { exec } from "child_process";
 import { normalize } from "path";
@@ -9,16 +9,16 @@ export default function watchWebComponents() {
         name: "watch-web-components",
         apply: "serve",
         configureServer(server) {
-            const srcDir = normalize("packages/lib/src");
+            const wcDir = normalize("packages/lib/web-components");
 
-            // Watch for changes in the src directory
-            server.watcher.add(srcDir);
+            // Watch for changes in the component directory
+            server.watcher.add(wcDir);
 
             // Add a handler for file changes
             server.watcher.on("all", (event, filePath) => {
                 const normalizedFilePath = normalize(filePath);
-                if (normalizedFilePath.startsWith(srcDir)) {
-                    // Execute the script only if the changed file is in the src directory
+                if (normalizedFilePath.startsWith(wcDir)) {
+                    // Execute the script only if the changed file is in the component directory
                     runScript("node ./scripts/export-web-components.js");
                 }
             });
@@ -40,7 +40,7 @@ export default function watchWebComponents() {
                 });
             }
 
-            log(`Watching ${srcDir} for component changes...`);
+            log(`Watching ${wcDir} for component changes...`);
         },
     };
 }

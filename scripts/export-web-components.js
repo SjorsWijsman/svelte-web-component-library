@@ -1,10 +1,10 @@
-// This script automatically adds the .wc.svelte exports to the packages/lib/src/index.js file
+// This script automatically adds the .wc.svelte exports to the packages/lib/web-components/index.js file
 
 import fs from "fs";
 import path from "path";
 import { log, error } from "./log.js";
 
-const componentsDirectory = "./packages/lib/src";
+const componentsDirectory = "./packages/lib/web-components";
 const indexFilePath = "./packages/lib/index.js";
 
 // Read the files in the components directory
@@ -22,11 +22,11 @@ fs.readdir(componentsDirectory, (err, files) => {
     // Generate export statements for each Svelte component
     const exportStatements = components.map((file) => {
         const componentName = path.basename(file, ".wc.svelte");
-        return `export { default as ${componentName} } from "./src/${file}";`;
+        return `export { default as ${componentName} } from "./web-components/${file}";`;
     });
 
     // Additional data
-    exportStatements.unshift(`import "./src/style/global.scss";`);
+    exportStatements.unshift(`import "./style/global.scss";`);
     exportStatements.unshift(
         "// These exports are automatically added while running the dev server or before a build"
     );

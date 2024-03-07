@@ -35,7 +35,7 @@
 </button>
 
 <style lang="scss">
-    @use "../../../lib/src/style/variables.scss" as *;
+    @use "../../../lib/style/variables.scss" as *;
 
     button {
         font-size: 0.8rem;

@@ -92,7 +92,7 @@
 </section>
 
 <style lang="scss">
-    @use "../../../lib/src/style/variables.scss" as *;
+    @use "../../../lib/style/variables.scss" as *;
 
     h2 {
         font-size: 0.9rem;
@@ -189,7 +189,7 @@
         top: 1rem;
         width: calc(100% - 2rem);
         height: calc(100% - 2rem);
-        outline: 1px dashed rgba(255, 255, 255, 0.1);
+        outline: 1px dashed rgba($colorText, 0.1);
         pointer-events: none;
         user-select: none;
     }

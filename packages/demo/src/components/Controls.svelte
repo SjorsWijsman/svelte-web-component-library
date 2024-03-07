@@ -34,7 +34,7 @@
 {/if}
 
 <style lang="scss">
-    @use "../../../lib/src/style/variables.scss" as *;
+    @use "../../../lib/style/variables.scss" as *;
 
     h3 {
         font-size: 0.9rem;

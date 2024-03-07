@@ -1,6 +1,36 @@
+@import "./mixins.scss";
 @import "./variables.scss";
 
-@mixin reset {
+:root {
+    background-color: $colorBackground;
+    scroll-behavior: smooth;
+}
+
+html {
+    font-size: max(11px, calc(60% + 0.8vmin));
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    .hero {
+        @include hero;
+    }
+}
+
+hr {
+    margin: 2rem 0;
+    opacity: 0.1;
+    background-color: $colorText;
+}
+
+* {
     font-family: $fontMain;
     color: $colorText;
     font-size: inherit;
@@ -11,26 +41,26 @@
     box-sizing: border-box;
 }
 
-@mixin h1 {
+h1 {
     font-size: 2.75rem;
     font-weight: bold;
 }
 
-@mixin h2 {
+h2 {
     font-size: 2rem;
     font-weight: bold;
 }
 
-@mixin h3 {
+h3 {
     font-size: 1.4rem;
     font-weight: bold;
 }
 
-@mixin p {
+p {
     opacity: 1;
 }
 
-@mixin a {
+a {
     --color: $colorText;
     --background: $colorBackground;
     color: var(--color);
@@ -41,18 +71,14 @@
     font-size: 0.9rem;
     vertical-align: middle;
 
-    &.button {
-        @include button;
-        opacity: 1;
-    }
-
     &.center {
         margin: 0 auto;
         text-align: center;
     }
 }
 
-@mixin button {
+button,
+a.button {
     color: $colorBackground;
     background-color: $colorText;
     display: inline-flex;
@@ -64,6 +90,7 @@
     padding: 0.5rem 1rem;
     height: 2.6rem;
     border-radius: 0.5rem;
+    opacity: 1;
 
     &.secondary {
         color: $colorText;
@@ -72,7 +99,9 @@
     }
 }
 
-@mixin input {
+input,
+textarea,
+select {
     border: 1px solid $colorOutline;
     color: $colorText;
     background-color: hsla(0, 0%, 100%, 0.05);
@@ -98,7 +127,7 @@
     }
 }
 
-@mixin label {
+label {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
