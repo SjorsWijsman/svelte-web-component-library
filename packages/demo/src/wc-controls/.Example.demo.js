@@ -1,6 +1,6 @@
 const component = {
     // A title is required
-    title: "porton-button",
+    title: "wc-button",
     // Props & slots are optional
     props: {
         // Object key = component prop name

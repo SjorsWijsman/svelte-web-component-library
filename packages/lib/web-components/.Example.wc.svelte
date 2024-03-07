@@ -1,6 +1,6 @@
 <!-- 
     1. Copy component file & change name (keep .wc.svelte extension)
-    2. Change tagname, this is what gets used as the custom element name, e.g. <porton-button />
+    2. Confirm tagname, this is what gets used as the custom element name, e.g. <wc-button />
     3. Run: `npm run dev -- --open` to start the demo environment
     4. To add to demo environment create a .demo.js file insde demo/src/wc-controls directory
     5. Develop the component
@@ -9,7 +9,7 @@
     Svelte documentation:
     https://svelte.dev/docs/custom-elements-api
 -->
-<svelte:options customElement="porton-example" />
+<svelte:options customElement="wc-example" />
 
 <script>
     // JavaScript goes here

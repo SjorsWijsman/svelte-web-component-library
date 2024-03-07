@@ -1,15 +1,15 @@
 const component = {
-    title: "porton-link",
+    title: "wc-link",
     props: {
         href: {
-            default: "https://www.porton.nl",
+            default: "https://www.google.com",
         },
         button: {
             controls: "Boolean",
         },
     },
     slots: {
-        default: "Porton",
+        default: "Link",
     },
 };
 

@@ -1,4 +1,4 @@
-<svelte:options customElement="porton-layout" />
+<svelte:options customElement="wc-layout" />
 
 <div>
     <slot />

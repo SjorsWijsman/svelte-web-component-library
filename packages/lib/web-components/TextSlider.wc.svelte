@@ -1,4 +1,4 @@
-<svelte:options customElement="porton-text-slider" />
+<svelte:options customElement="wc-text-slider" />
 
 <script>
     import { onMount } from "svelte";

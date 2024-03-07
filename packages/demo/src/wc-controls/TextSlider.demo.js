@@ -1,5 +1,5 @@
 const component = {
-    title: "porton-text-slider",
+    title: "wc-text-slider",
     props: {
         textlist: {
             default: "Lorem,Ipsum,Dolor,Sit,Amet",

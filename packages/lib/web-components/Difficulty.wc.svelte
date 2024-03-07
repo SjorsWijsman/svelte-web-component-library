@@ -1,4 +1,4 @@
-<svelte:options customElement="porton-difficulty" />
+<svelte:options customElement="wc-difficulty" />
 
 <script>
     export let difficulty = 0;

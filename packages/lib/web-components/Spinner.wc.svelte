@@ -1,6 +1,6 @@
 <svelte:options
     customElement={{
-        tag: "porton-spinner",
+        tag: "wc-spinner",
         props: {
             power: { type: "Number" },
             damping: { type: "Number" },

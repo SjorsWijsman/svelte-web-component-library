@@ -1,4 +1,4 @@
-<svelte:options customElement="porton-link" />
+<svelte:options customElement="wc-link" />
 
 <script>
     export let href = "";

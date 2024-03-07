@@ -1,5 +1,5 @@
 const component = {
-    title: "porton-spinner",
+    title: "wc-spinner",
     props: {
         power: {
             controls: "Number",

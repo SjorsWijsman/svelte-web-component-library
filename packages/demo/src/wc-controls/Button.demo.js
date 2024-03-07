@@ -1,5 +1,5 @@
 const component = {
-    title: "porton-button",
+    title: "wc-button",
     props: {
         action: {
             controls: "Function",

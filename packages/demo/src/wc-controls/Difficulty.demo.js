@@ -1,5 +1,5 @@
 const component = {
-    title: "porton-difficulty",
+    title: "wc-difficulty",
     props: {
         difficulty: {
             controls: "Select",

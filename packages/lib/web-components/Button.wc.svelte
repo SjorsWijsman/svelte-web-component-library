@@ -1,4 +1,4 @@
-<svelte:options customElement="porton-button" />
+<svelte:options customElement="wc-button" />
 
 <script>
     export let action = () => console.log("I am a button");
