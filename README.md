@@ -4,6 +4,8 @@
 
 This templates generates vanilla [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) than can be used with [plain HTML](https://www.webcomponents.org/introduction#how-do-i-use-a-web-component-) or within any major frameworks, such as React, Angular, Vue or Svelte (see [compatibility](https://custom-elements-everywhere.com/)). The template also includes a demo environment to easily preview your components and interact with its props & slots.
 
+![Demo environment preview]()
+
 ## How to use this template
 
 You can directly create a new GitHub repo from this template by selecting the **Use this template** button on GitHub.
