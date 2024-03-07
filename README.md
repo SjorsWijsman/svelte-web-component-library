@@ -1,8 +1,8 @@
-# 🌐 svelte-web-components-template
+# 📚 svelte-web-component-library
 
-> A base template for building a shareable web components library using [Vite](https://vitejs.dev), [Svelte](https://svelte.dev) and [TypeScript](https://www.typescriptlang.org).
+> Based on sinedied's [svelte-web-components-template](https://github.com/sinedied/svelte-web-components-template).
 
-This templates generates vanilla [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) than can be used with [plain HTML](https://www.webcomponents.org/introduction#how-do-i-use-a-web-component-) or within any major frameworks, such as React, Angular, Vue or Svelte (see [compatibility](https://custom-elements-everywhere.com/)).
+This templates generates vanilla [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) than can be used with [plain HTML](https://www.webcomponents.org/introduction#how-do-i-use-a-web-component-) or within any major frameworks, such as React, Angular, Vue or Svelte (see [compatibility](https://custom-elements-everywhere.com/)). The template also includes a demo environment to easily preview your components and interact with its props & slots.
 
 ## How to use this template
 
@@ -11,14 +11,14 @@ You can directly create a new GitHub repo from this template by selecting the **
 You can also clone it locally with the following commands:
 
 ```bash
-npx degit sinedied/svelte-web-components-template#main my-component-lib
+npx degit SjorsWijsman/svelte-web-component-library#main my-component-lib
 cd my-component-lib
 npm install
 ```
 
 Your components source code lives in `lib/` folder. Only components with the `.wc.svelte` extension will be exported as web components and available in your library. This means that you can also use regular Svelte components with the `.svelte` extension as child components for your implementation details.
 
-You can add additional components by adding them to the `lib` folder and editing `lib/index.js`.
+You can add additional components by adding them to the `lib` folder and editing `lib/index.js`. While running the development server or after a new build your components are automatically added to the `lib/index.js` file.
 
 ## Testing your components
 
@@ -30,7 +30,7 @@ npm start
 
 Then open your browser to [localhost:5173](http://localhost:5173).
 
-This will build the demo application located in the `demo/` folder, in which you can use and test your web components during development.
+This will build the demo application located in the `demo/` folder, in which you can use and test your web components during development. Every component needs a respective `.demo.js` file present in the `demo/src/wc-controls` folder. See the `.Example.demo.js` file inside for more information.
 
 If you need unit tests, you can take a look at [Jest](https://jestjs.io) and [Jest testing library](https://github.com/testing-library/svelte-testing-library).
 
