@@ -11,14 +11,10 @@
         "prebuild": "node ./scripts/export-web-components.js",
         "build": "vite build",
         "build:demo": "vite build --config vite.demo.config.js",
-        "build:legacy": "npx babel ./dist/svelte-web-components.js --out-file ./dist/svelte-web-components.legacy.js",
         "preview": "vite preview --config vite.demo.config.js",
         "prepublishOnly": "npm run build -s"
     },
     "devDependencies": {
-        "@babel/cli": "^7.23.9",
-        "@babel/core": "^7.24.0",
-        "@babel/preset-env": "^7.24.0",
         "@sveltejs/vite-plugin-svelte": "^3.0.2",
         "sass": "^1.71.1",
         "svelte": "^4.2.12",
