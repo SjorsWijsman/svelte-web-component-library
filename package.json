@@ -1,10 +1,10 @@
 {
-    "name": "svelte-web-components",
+    "name": "svelte-web-component-library",
     "description": "A base template for building a shareable web components library with Vite + Svelte",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "type": "module",
-    "module": "dist/lib/svelte-web-components.js",
-    "main": "dist/lib/svelte-web-components.umd.js",
+    "module": "dist/lib/svelte-web-component-library.js",
+    "main": "dist/lib/svelte-web-component-library.umd.js",
     "scripts": {
         "start": "npm run dev -s",
         "dev": "vite --config vite.demo.config.js",
