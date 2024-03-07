@@ -3,9 +3,12 @@
 import fs from "fs";
 import path from "path";
 import { log, error } from "./log.js";
+import "dotenv/config";
 
 const componentsDirectory = "./packages/lib/web-components";
 const indexFilePath = "./packages/lib/index.js";
+
+const bundleComponents = JSON.parse(process.env.BUNDLE_COMPONENTS);
 
 // Read the files in the components directory
 fs.readdir(componentsDirectory, (err, files) => {
@@ -22,10 +25,15 @@ fs.readdir(componentsDirectory, (err, files) => {
     // Generate export statements for each Svelte component
     const exportStatements = components.map((file) => {
         const componentName = path.basename(file, ".wc.svelte");
-        return `export { default as ${componentName} } from "./web-components/${file}";`;
+        if (bundleComponents) {
+            return `export { default as ${componentName} } from "./web-components/${file}";`;
+        } else {
+            return `import("./web-components/${file}");`;
+        }
     });
 
     // Additional data
+    // Add your data here
     exportStatements.unshift(`import "./style/global.scss";`);
     exportStatements.unshift(
         "// These exports are automatically added while running the dev server or before a build"

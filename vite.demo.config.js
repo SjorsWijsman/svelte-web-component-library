@@ -4,6 +4,11 @@ import watchWebComponents from "./scripts/watch-web-components";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    server: {
+        fs: {
+            cachedChecks: false,
+        },
+    },
     root: "./packages/demo/",
     resolve: {
         dedupe: ["svelte"],

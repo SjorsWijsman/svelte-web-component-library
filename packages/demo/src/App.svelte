@@ -8,6 +8,7 @@
 
     let componentList = [];
 
+    // Loop through lib & import wc control files
     for (let name in lib) {
         import(`./wc-controls/${name}.demo.js`)
             .then((module) => {
