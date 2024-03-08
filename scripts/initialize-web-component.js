@@ -1,6 +1,7 @@
 import { normalizePath } from "vite";
 import fs from "fs";
 import "dotenv/config";
+import { log } from "./log.js";
 
 const prefix = process.env.COMPONENT_PREFIX;
 
@@ -14,6 +15,7 @@ if (prefix) {
 
     // Check if the file is empty
     if (fileContent.trim().length === 0) {
+        log(`Initializing .wc.svelte file`);
         // If the file is empty, add the svelte:options tag
         fs.writeFileSync(
             path,

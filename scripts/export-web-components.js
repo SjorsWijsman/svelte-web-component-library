@@ -39,6 +39,8 @@ fs.readdir(componentsDirectory, (err, files) => {
         "// These exports are automatically added while running the dev server or before a build"
     );
 
+    log(`Updating .wc exports...`);
+
     // Write export statements to the index file
     const content = exportStatements.join("\n");
     fs.writeFile(indexFilePath, content, (err) => {
