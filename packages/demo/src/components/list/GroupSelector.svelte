@@ -7,9 +7,7 @@
     <div>
         <!-- <p>Show Group</p> -->
         <select class="groups" bind:value={currentGroup}>
-            <option value={""}>
-                All
-            </option>
+            <option value={""}>All</option>
             {#each groups as group}
                 <option value={group}>
                     {group}
@@ -20,7 +18,7 @@
 {/if}
 
 <style lang="scss">
-    @import '../../style/_variables.scss';
+    @import "../../style/_variables.scss";
 
     .groups {
         font-size: 0.9rem;

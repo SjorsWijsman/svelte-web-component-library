@@ -37,7 +37,7 @@
 </div>
 
 <style lang="scss">
-    @import '../../style/_variables.scss';
+    @import "../../style/_variables.scss";
 
     span {
         font-size: 0.9rem;

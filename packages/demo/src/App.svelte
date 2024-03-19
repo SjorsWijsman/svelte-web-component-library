@@ -9,12 +9,7 @@
     import ComponentControls from "$components/ComponentControls.svelte";
 
     import { validateComponent } from "$scripts/validateComponent";
-    import {
-        componentList,
-        groups,
-        selectedComponent,
-        missingList,
-    } from "$store";
+    import { componentList, groups, missingList } from "$store";
 
     // Loop through lib & import wc control files
     for (let name in lib) {

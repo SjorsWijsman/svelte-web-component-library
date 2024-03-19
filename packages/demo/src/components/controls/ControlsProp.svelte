@@ -32,11 +32,7 @@
         title={prop.value}
     />
 {:else if prop.controls === "Color"}
-    <input
-        type="color"
-        id={name}
-        bind:value={prop.value}
-    />
+    <input type="color" id={name} bind:value={prop.value} />
 {:else}
     <input
         type="text"

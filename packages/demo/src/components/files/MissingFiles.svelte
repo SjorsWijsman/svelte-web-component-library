@@ -1,11 +1,11 @@
 <script>
     import { missingList } from "$store";
 
-    let open = false
+    let open = false;
 </script>
 
 {#if $missingList.length}
-    <button on:click={() => open = !open}>
+    <button on:click={() => (open = !open)}>
         {$missingList.length} components without a demo file
     </button>
     {#if open}
@@ -18,7 +18,7 @@
 {/if}
 
 <style lang="scss">
-    @import '../../style/_variables.scss';
+    @import "../../style/_variables.scss";
 
     button {
         padding: 0.5rem 1rem;

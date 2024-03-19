@@ -1,25 +1,25 @@
 <script>
-    import Search from "$components/list/Search.svelte"
-    import GroupSelector from "$components/list/GroupSelector.svelte"    
-    import { 
-        componentList, 
-        selectedComponent, 
-        searchTerm, 
-        groups, 
-        currentGroup 
-    } from "$store"
-  import MissingFiles from "./files/MissingFiles.svelte";
+    import Search from "$components/list/Search.svelte";
+    import GroupSelector from "$components/list/GroupSelector.svelte";
+    import {
+        componentList,
+        selectedComponent,
+        searchTerm,
+        groups,
+        currentGroup,
+    } from "$store";
+    import MissingFiles from "./files/MissingFiles.svelte";
 
     let componentListFiltered = [];
 
     // Add componentlist to filtered for initial list
-    $: componentListFiltered = $componentList
+    $: componentListFiltered = $componentList;
 
     // Filter list on update of searchterm or currentgroup
-    $: filterList($searchTerm, $currentGroup, $componentList)
+    $: filterList($searchTerm, $currentGroup, $componentList);
 
     function filterList($searchTerm, $currentGroup) {
-        let list = $componentList
+        let list = $componentList;
         if ($searchTerm) {
             list = list.filter((component) =>
                 component.title.includes($searchTerm.toLocaleLowerCase())
@@ -30,7 +30,7 @@
                 (component) => component.group === $currentGroup
             );
         }
-        componentListFiltered = list
+        componentListFiltered = list;
     }
 </script>
 
@@ -55,9 +55,10 @@
         <ul>
             {#each componentListFiltered as component (component.title)}
                 <li>
-                    <button 
-                        on:click={() => $selectedComponent = component}
-                        class:selected={component.title === $selectedComponent?.title}
+                    <button
+                        on:click={() => ($selectedComponent = component)}
+                        class:selected={component.title ===
+                            $selectedComponent?.title}
                         disabled={component.title === $selectedComponent?.title}
                     >
                         {component.title.split("-").slice(1).join(" ")}
@@ -71,8 +72,8 @@
 <MissingFiles />
 
 <style lang="scss">
-    @use 'sass:color';
-    @import '../style/_variables.scss';
+    @use "sass:color";
+    @import "../style/_variables.scss";
 
     h1 {
         font-weight: bold;
@@ -98,7 +99,8 @@
         border-bottom: 1px solid color.scale($colorBackground, $lightness: 15%);
     }
 
-    .filters, .component-list {
+    .filters,
+    .component-list {
         background-color: color.scale($colorBackground, $lightness: 7.5%);
     }
 
@@ -142,7 +144,7 @@
             text-transform: capitalize;
             font-weight: bold;
             text-wrap: nowrap;
-            transition: all .1s ease-out;
+            transition: all 0.1s ease-out;
             padding: 0.5rem 1rem;
 
             span {
@@ -152,11 +154,17 @@
             }
 
             &:hover {
-                background-color: color.scale($colorBackground, $lightness: 12.5%)
+                background-color: color.scale(
+                    $colorBackground,
+                    $lightness: 12.5%
+                );
             }
-            
+
             &.selected {
-                background-color: color.scale($colorBackground, $lightness: 20%);
+                background-color: color.scale(
+                    $colorBackground,
+                    $lightness: 20%
+                );
             }
         }
     }

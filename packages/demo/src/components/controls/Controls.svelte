@@ -33,8 +33,8 @@
 </div>
 
 <style lang="scss">
-    @use 'sass:color';
-    @import '../../style/_variables.scss';
+    @use "sass:color";
+    @import "../../style/_variables.scss";
 
     h3 {
         font-size: 0.9rem;

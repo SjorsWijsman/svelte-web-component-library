@@ -37,7 +37,7 @@
         }
     }
 
-    $: $componentElement = `<${title}${componentProps}>${componentSlots}</${title}>`
+    $: $componentElement = `<${title}${componentProps}>${componentSlots}</${title}>`;
 </script>
 
 <div>
@@ -52,8 +52,8 @@
 <Controls bind:props bind:slots />
 
 <style lang="scss">
-    @use 'sass:color';
-    @import '../style/_variables.scss';
+    @use "sass:color";
+    @import "../style/_variables.scss";
 
     div {
         padding: 1rem;
