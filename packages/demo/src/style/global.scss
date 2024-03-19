@@ -1,0 +1,116 @@
+@import "./variables.scss";
+
+:root {
+    color: $colorText;
+    background-color: $colorBackground;
+    scroll-behavior: smooth;
+}
+
+* {
+    font-size: 0.9rem;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: $fontMain;
+    font-weight: 300;
+    color: $colorText;
+}
+
+html {
+    font-size: max(11px, calc(60% + 0.8vmin));
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    max-width: 100%;
+    padding: 0;
+}
+
+label {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+    margin-bottom: 0.1rem;
+}
+
+select {
+    min-width: 4rem;
+    padding: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+input,
+select {
+    min-width: 4rem;
+    padding: 0.25rem;
+    height: 1.9rem;
+    background-color: rgba($colorText, 0.1);
+    border-width: 1px;
+    border-color: rgba($colorText, 0.2);
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+
+    &[type="text"] {
+        width: 100%;
+    }
+
+    &[type="button"] {
+        padding: 0.25rem 0.5rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba($colorText, 0.15);
+            border-color: rgba($colorText, 0.25);
+        }
+        &:active {
+            background-color: rgba($colorText, 0.1);
+            border-color: rgba($colorText, 0.05);
+        }
+    }
+
+    option {
+        color: $colorBackground;
+    }
+}
+
+textarea {
+    padding: 0.25rem;
+    width: 100%;
+    resize: vertical;
+    background-color: rgba($colorText, 0.1);
+    border-color: rgba($colorText, 0.2);
+}
+
+button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: $colorText;
+    color: $colorBackground;
+    border: none;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s, border-color 0.2s;
+
+    &:hover {
+        background-color: rgba($colorText, 0.9);
+    }
+    &:active {
+        background-color: rgba($colorText, 0.8);
+    }
+
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba($colorText, 0.2);
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba($colorText, 0);
+}

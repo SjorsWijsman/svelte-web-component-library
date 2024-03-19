@@ -1,7 +1,14 @@
 @import "./mixins.scss";
 @import "./variables.scss";
 
+// Prevents FOUC (https://www.jacobmilhorn.com/posts/solving-fouc-in-web-components/)
+*:not(:defined) {
+    opacity: 0;  
+    transition: opacity 0.3s ease-in-out;
+}
+
 :root {
+    color: $colorText;
     background-color: $colorBackground;
     scroll-behavior: smooth;
 }
@@ -18,54 +25,64 @@ main {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-}
-
-hr {
-    margin: 2rem 0;
-    opacity: 0.1;
-    background-color: $colorText;
+    max-width: 45rem;
+    padding: 2rem;
 }
 
 * {
-    font-family: $fontMain;
-    color: $colorText;
     font-size: inherit;
-    font-weight: 300;
-    line-height: 1.3em;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: $fontMain;
+    color: inherit;
+    font-weight: 400;
+    line-height: 1.35em;
 }
 
 h1 {
-    font-size: 2.75rem;
+    font-family: $fontHeader;
+    font-size: 3rem;
     font-weight: bold;
+    color: $colorBlack;
+}
+
+[slot="subheader"] {
+    color: $colorBlack;
+    opacity: 0.9;
 }
 
 h2 {
+    font-family: $fontHeader;
     font-size: 2rem;
     font-weight: bold;
 }
 
 h3 {
+    font-family: $fontHeader;
     font-size: 1.4rem;
     font-weight: bold;
 }
 
+h4 {
+    font-weight: bold;
+    margin-top: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+hr {
+    margin: 0.5rem 0;
+    opacity: 0.5;
+    background-color: $colorBlue;
+}
+
 p {
-    opacity: 1;
+    opacity: 0.9;
+    line-height: unset;
 }
 
 a {
-    --color: $colorText;
-    --background: $colorBackground;
-    color: var(--color);
-    background-color: var(--background);
     text-decoration: none;
-    font-weight: 300;
-    opacity: 0.6;
-    font-size: 0.9rem;
-    vertical-align: middle;
 
     &.center {
         margin: 0 auto;
@@ -75,24 +92,7 @@ a {
 
 button,
 a.button {
-    color: $colorBackground;
-    background-color: $colorText;
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-    border: 0px solid transparent;
-    touch-action: manipulation;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    height: 2.6rem;
-    border-radius: 0.5rem;
-    opacity: 1;
-
-    &.secondary {
-        color: $colorText;
-        border: 1px solid $colorText;
-        background-color: transparent;
-    }
+    @include button($colorBackground, $colorText);
 }
 
 input,

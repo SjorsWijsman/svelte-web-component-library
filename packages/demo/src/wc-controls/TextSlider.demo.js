@@ -1,5 +1,6 @@
 const component = {
-    title: "wc-text-slider",
+    title: "wc-textslider",
+    group: "Parts",
     props: {
         textlist: {
             default: "Lorem,Ipsum,Dolor,Sit,Amet",

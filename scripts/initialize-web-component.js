@@ -16,10 +16,10 @@ if (prefix) {
     // Check if the file is empty
     if (fileContent.trim().length === 0) {
         log(`Initializing .wc.svelte file`);
-        // If the file is empty, add the svelte:options tag
+        // If the file is empty, add the svelte:options tag with prefix and kebab cased name
         fs.writeFileSync(
             path,
-            `<svelte:options customElement="${prefix}-${fileName.toLocaleLowerCase()}" />\n`
+            `<svelte:options customElement="${prefix}-${fileName.replace(/([a-z])([A-Z])/g, '$1-$2').toLocaleLowerCase()}" />\n`
         );
     }
 }

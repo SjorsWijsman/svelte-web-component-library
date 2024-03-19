@@ -17,15 +17,18 @@
     },
     "devDependencies": {
         "@sveltejs/vite-plugin-svelte": "^3.0.2",
-        "chokidar": "^3.6.0",
         "dotenv": "^16.4.5",
         "sass": "^1.71.1",
         "svelte": "^4.2.12",
         "svelte-check": "^3.6.6",
         "svelte-preprocess": "^5.1.3",
+        "svelte-splitpanes": "^0.8.0",
         "vite": "^5.1.4"
     },
     "files": [
         "dist/lib"
-    ]
+    ],
+    "dependencies": {
+        "embla-carousel-svelte": "^8.0.0"
+    }
 }

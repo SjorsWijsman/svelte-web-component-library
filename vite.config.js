@@ -3,6 +3,7 @@ import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { transform } from "esbuild";
 import pkg from "./package.json";
 import "dotenv/config";
+import path from "path";
 
 const bundleComponents = JSON.parse(process.env.BUNDLE_COMPONENTS);
 
@@ -51,6 +52,18 @@ export default defineConfig({
         }),
         minifyEs(),
     ],
+    resolve: {
+        alias: {
+            $lib: path.resolve(__dirname, "packages/lib"),
+        },
+    },
+    css: {
+        preprocessorOptions: {
+            scss: {
+                includePaths: [path.resolve(__dirname, "packages/lib/style")],
+            },
+        },
+    },
 });
 
 // Workaround for https://github.com/vitejs/vite/issues/6555

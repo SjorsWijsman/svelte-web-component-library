@@ -1,4 +1,4 @@
-<svelte:options customElement="wc-text-slider" />
+<svelte:options customElement="wc-textslider" />
 
 <script>
     import { onMount } from "svelte";
@@ -19,7 +19,7 @@
     });
 </script>
 
-<span class="container" style:height={`calc(1em - 1px)`}>
+<span class="container">
     {#key displayedText}
         <span
             class="slider"
@@ -29,23 +29,35 @@
             {displayedText}
         </span>
     {/key}
+    <span class="placeholder" aria-hidden="true">
+        {displayedText}
+    </span>
 </span>
 
 <style lang="scss">
     // import global style for consistent styling, any unused selectors are automatically removed
-    @import "../../lib/style/global.scss";
+    @import "../style/global.scss";
 
     .container {
+        display: inline-block;
         position: relative;
+        font-weight: 750;
     }
 
     .container .slider {
         position: absolute;
-        font-size: inherit;
-        font-weight: 750;
-        background: -webkit-linear-gradient(left, $colorPink, $colorPurple);
+        font-family: $fontHeader;
+        font-weight: inherit;
+        background: $colorBlue;
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+    }
+
+    .container .placeholder {
+        opacity: 0;
+        user-select: none;
+        font-family: $fontHeader;
+        font-weight: 750;
     }
 </style>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Component Preview</title>
+    <style>
+        .size-widget {
+            position: fixed;
+            bottom: 1px;
+            right: 1px;
+            background-color: #000;
+            color: #fff;
+            font-size: 13px;
+            font-family: monospace;
+            opacity: 0.7;
+            padding: 0 2px;
+        }
+
+        .rem-widget {
+            bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        window.addEventListener('message', (event) => {
+            const { componentElement } = event.data;
+            console.log(componentElement);
+            if (componentElement) {
+                // Load selected component inside iframe
+                const componentContainer = document.querySelector('#component-preview');
+                componentContainer.innerHTML = componentElement;
+            }
+        });
+    </script>
+
+    <!-- Component container -->
+    <main id="component-preview"></main>
+
+    <!-- Show screen width in px and rems -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const widthInPixels = window.innerWidth;
+            const widthInRems = (widthInPixels / parseFloat(getComputedStyle(document.documentElement).fontSize)).toFixed(1);
+
+            const pixelWidget = document.createElement('div');
+            pixelWidget.classList.add("size-widget");
+            pixelWidget.textContent = `${widthInPixels}px`;
+            document.body.appendChild(pixelWidget);
+
+            const remWidget = document.createElement('div');
+            remWidget.classList.add("size-widget", "rem-widget");
+            remWidget.textContent = `${widthInRems}rem`;
+            document.body.appendChild(remWidget);
+
+            window.addEventListener('resize', () => updateSize());
+
+            function updateSize() {
+                const newWidthInPixels = window.innerWidth;
+                const newWidthInRems = (newWidthInPixels / parseFloat(getComputedStyle(document.documentElement).fontSize)).toFixed(1);
+
+                pixelWidget.textContent = `px: ${newWidthInPixels}`;
+                remWidget.textContent = `rem: ${newWidthInRems}`;
+            }
+        });
+    </script>
+</body>
+</html>

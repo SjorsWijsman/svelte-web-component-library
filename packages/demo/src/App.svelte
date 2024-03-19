@@ -1,12 +1,20 @@
 <script>
-    import * as lib from "../../lib";
-    import "./demo.scss";
+    import * as lib from "$lib/web-components";
+    import "$style/global.scss";
 
-    import { validateComponent } from "./scripts/validateComponent";
-    import ComponentContainer from "./components/ComponentContainer.svelte";
-    import iconSearch from "./icons/search.svg?raw";
+    import { Pane, Splitpanes } from "svelte-splitpanes";
 
-    let componentList = [];
+    import ComponentList from "$components/ComponentList.svelte";
+    import ComponentPreview from "$components/ComponentPreview.svelte";
+    import ComponentControls from "$components/ComponentControls.svelte";
+
+    import { validateComponent } from "$scripts/validateComponent";
+    import {
+        componentList,
+        groups,
+        selectedComponent,
+        missingList,
+    } from "$store";
 
     // Loop through lib & import wc control files
     for (let name in lib) {
@@ -16,89 +24,84 @@
                 validateComponent(
                     name,
                     component,
-                    componentList,
-                    () => (componentList = [...componentList, component])
+                    $componentList,
+                    () => ($componentList = [...$componentList, component])
                 );
-                componentList.sort((a, b) => a.title.localeCompare(b.title));
+                // Add group to group list
+                if (component.group && !$groups.includes(component.group)) {
+                    $groups = [...$groups, component.group].sort();
+                }
+                // Sort component list
+                $componentList.sort((a, b) => a.title.localeCompare(b.title));
             })
             .catch((error) => {
-                // console.error(error);
-                console.warn(`[svelte-wc] ${name}: Demo file is missing.`);
+                if (error.message.includes("Unknown variable dynamic import")) {
+                    // console.warn(`[svelte-wc] ${name}: Demo file is missing.`);
+                    $missingList = [...$missingList, name];
+                } else {
+                    console.error(`[svelte-wc] ${name}:`, error);
+                }
             });
-    }
-
-    let searchTerm = "";
-
-    $: componentListFiltered = componentList;
-
-    function search() {
-        componentListFiltered = componentList.filter((component) =>
-            component.title.includes(searchTerm.toLocaleLowerCase())
-        );
     }
 </script>
 
 <main>
-    <h1>Demo Environment</h1>
-    <p>
-        {componentList.length} Components
-        {#if searchTerm}
-            -
-            {componentListFiltered.length} result
-        {/if}
-    </p>
-    <hr />
-    <div class="search">
-        {@html iconSearch}
-        <input
-            type="text"
-            bind:value={searchTerm}
-            on:input={search}
-            placeholder="Search for components"
-        />
-    </div>
-    <hr />
-    {#each componentListFiltered as component (component.title)}
-        <ComponentContainer
-            title={component.title}
-            props={component.props}
-            slots={component.slots}
-        />
-    {/each}
+    <Splitpanes style="height: 100vh; width: 100vw;" pushOtherPanes={false}>
+        <Pane>
+            <section class="sidebar">
+                <ComponentList />
+            </section>
+        </Pane>
+        <Pane size={60} minSize={30}>
+            <section class="preview">
+                <ComponentPreview />
+            </section>
+        </Pane>
+        <Pane>
+            <section class="sidebar">
+                <ComponentControls />
+            </section>
+        </Pane>
+    </Splitpanes>
 </main>
 
 <style lang="scss">
-    h1 {
-        font-size: 2rem;
+    @use "sass:color";
+    @import "./style/_variables.scss";
+
+    main {
+        :global(.splitpanes__splitter) {
+            background-color: color.scale(
+                $colorBackground,
+                $lightness: 15%
+            ) !important;
+            border-left: color.scale(
+                $colorBackground,
+                $lightness: 15%
+            ) !important;
+
+            &::after,
+            &::before {
+                background-color: color.scale(
+                    $colorBackground,
+                    $lightness: 25%
+                ) !important;
+            }
+        }
     }
 
-    p {
-        opacity: 0.7;
-    }
-
-    .search {
+    section {
+        position: relative;
         display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.9rem;
+        flex-direction: column;
+        height: 100%;
+    }
 
-        :global(svg) {
-            opacity: 0.5;
-        }
+    .sidebar {
+        background-color: color.scale($colorBackground, $lightness: 10%);
+    }
 
-        input {
-            margin: 0;
-            width: 100%;
-            opacity: 0.7;
-            transition: opacity 0.3s ease-out;
-
-            &:focus {
-                opacity: 1;
-            }
-
-            ::placeholder {
-                font-size: 0.7rem;
-            }
-        }
+    .preview {
+        background-color: $colorBackground;
     }
 </style>

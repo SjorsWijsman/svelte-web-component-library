@@ -23,7 +23,7 @@
 
 <style lang="scss">
     // import global style for consistent styling, any unused selectors are automatically removed
-    @import "../../lib/style/global.scss";
+    @import "../style/global.scss";
 
     // Style goes here
     p {

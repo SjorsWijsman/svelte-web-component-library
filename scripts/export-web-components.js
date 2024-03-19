@@ -1,17 +1,15 @@
 // This script automatically adds the .wc.svelte exports to the packages/lib/web-components/index.js file
-
 import fs from "fs";
 import path from "path";
 import { log, error } from "./log.js";
+import { normalizePath } from "vite";
 import "dotenv/config";
 
-const componentsDirectory = "./packages/lib/web-components";
-const indexFilePath = "./packages/lib/index.js";
-
 const bundleComponents = JSON.parse(process.env.BUNDLE_COMPONENTS);
+const webComponentsPath = "./packages/lib/web-components";
 
-// Read the files in the components directory
-fs.readdir(componentsDirectory, (err, files) => {
+// Read the files and directories in the components directory recursively
+fs.readdir(webComponentsPath, { recursive: true }, (err, files) => {
     if (err) {
         error("Error reading directory", err);
         return;
@@ -25,25 +23,29 @@ fs.readdir(componentsDirectory, (err, files) => {
     // Generate export statements for each Svelte component
     const exportStatements = components.map((file) => {
         const componentName = path.basename(file, ".wc.svelte");
+        
+        // Calculate the relative path of the component file from the web-components directory
+        const relativeFilePath = path.relative(webComponentsPath, file);
+        
+        // Construct the correct relative import/export path
+        const exportPath = normalizePath(relativeFilePath).replace("../../.", "");
+
         if (bundleComponents) {
-            return `export { default as ${componentName} } from "./web-components/${file}";`;
+            return `export { default as ${componentName} } from "${exportPath}";`;
         } else {
-            return `import("./web-components/${file}");`;
+            return `import("${exportPath}");`;
         }
     });
 
-    // Additional data
-    // Add your data here
-    exportStatements.unshift(`import "./style/global.scss";`);
     exportStatements.unshift(
-        "// These exports are automatically added while running the dev server or before a build"
+        "// !!!\n// These exports are automatically generated while running the dev server or before a build.\n// Do not modify manually.\n// !!!"
     );
 
     log(`Updating .wc exports...`);
 
     // Write export statements to the index file
     const content = exportStatements.join("\n");
-    fs.writeFile(indexFilePath, content, (err) => {
+    fs.writeFile("./packages/lib/web-components/index.js", content, { flag: 'w' }, (err) => {
         if (err) {
             error("Error writing to index file", err);
             return;

@@ -21,10 +21,14 @@
 
 <p style:color={difficulties[difficulty]?.color}>
     {difficulties[difficulty]?.title}
-    <slot />
 </p>
 
 <style lang="scss">
     // import global style for consistent styling, any unused selectors are automatically removed
-    @import "../../lib/style/global.scss";
+    @import "../style/global.scss";
+
+    p {
+        opacity: 1;
+        margin: 0;
+    }
 </style>

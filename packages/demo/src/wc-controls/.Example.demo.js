@@ -1,6 +1,8 @@
 const component = {
     // A title is required
     title: "wc-button",
+    // Optional group to sort components
+    group: "Content Blocks",
     // Props & slots are optional
     props: {
         // Object key = component prop name
