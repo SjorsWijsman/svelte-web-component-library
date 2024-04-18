@@ -40,15 +40,17 @@
     $: $componentElement = `<${title}${componentProps}>${componentSlots}</${title}>`;
 </script>
 
-<div>
-    <h2>{$selectedComponent.title.split("-").slice(1).join(" ")}</h2>
-    {#if $selectedComponent.group}
-        <p class="group">{@html IconTag} {$selectedComponent.group}</p>
-    {/if}
-    {#if $selectedComponent.description}
-        <p class="description">{@html $selectedComponent.description}</p>
-    {/if}
-</div>
+{#if $selectedComponent}
+    <div>
+        <h2>{$selectedComponent.title.split("-").slice(1).join(" ")}</h2>
+        {#if $selectedComponent.group}
+            <p class="group">{@html IconTag} {$selectedComponent.group}</p>
+        {/if}
+        {#if $selectedComponent.description}
+            <p class="description">{@html $selectedComponent.description}</p>
+        {/if}
+    </div>
+{/if}
 <Controls bind:props bind:slots />
 
 <style lang="scss">

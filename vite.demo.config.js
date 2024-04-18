@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import { svelte } from "@sveltejs/vite-plugin-svelte";
+import { sveltekit } from "@sveltejs/kit/vite";
 import * as path from "path";
 import watchWebComponents from "./scripts/watch-web-components";
 
@@ -10,7 +10,6 @@ export default defineConfig({
             cachedChecks: false,
         },
     },
-    root: "./packages/demo/",
     resolve: {
         dedupe: ["svelte"],
         alias: {
@@ -30,13 +29,23 @@ export default defineConfig({
         emptyOutDir: true,
     },
     plugins: [
-        svelte({
+        sveltekit({
             exclude: /\.wc\.svelte$/,
             hot: false,
+            kit: {
+                paths: {
+                    base: path.resolve(__dirname, "packages/demo"),
+                },
+            },
         }),
-        svelte({
+        sveltekit({
             include: /\.wc\.svelte$/,
             hot: false,
+            kit: {
+                paths: {
+                    base: path.resolve(__dirname, "packages/demo"),
+                },
+            },
             compilerOptions: {
                 customElement: true,
             },

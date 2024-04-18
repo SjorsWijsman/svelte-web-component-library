@@ -8,7 +8,7 @@ This is the HTML file for the demo environment
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/svelte.svg" />
+        <link rel="icon" href="%sveltekit.assets%/favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Svelte Web Components Demo</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,9 +21,10 @@ This is the HTML file for the demo environment
             type="text/javascript"
             src="https://unpkg.com/default-passive-events"
         ></script>
+        %sveltekit.head%
     </head>
     <body>
-        <div id="app"></div>
+        <div style="display: contents">%sveltekit.body%</div>
         <script type="module" src="/src/main.js"></script>
     </body>
 </html>
