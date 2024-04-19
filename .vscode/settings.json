@@ -1,19 +1,20 @@
 {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnType": false, // required
-    "editor.formatOnPaste": true, // optional
-    "editor.formatOnSave": true, // optional
-    "editor.formatOnSaveMode": "file", // required to format on save
-    "files.autoSave": "onFocusChange", // optional but recommended
-    "vs-code-prettier-eslint.prettierLast": false, // set as "true" to run 'prettier' last not first
-    "editor.tabSize": 4,
-    "editor.detectIndentation": false,
-    "prettier.tabWidth": 4,
-    "prettier.htmlWhitespaceSensitivity": "ignore",
-    "[svelte]": {
-        "editor.defaultFormatter": "svelte.svelte-vscode"
-    },
-    "svelte.plugin.svelte.compilerWarnings": {
-        "css-unused-selector": "ignore"
-    }
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnType": false, // required
+	"editor.formatOnPaste": true, // optional
+	"editor.formatOnSave": true, // optional
+	"editor.formatOnSaveMode": "file", // required to format on save
+	"files.autoSave": "onFocusChange", // optional but recommended
+	"vs-code-prettier-eslint.prettierLast": false, // set as "true" to run 'prettier' last not first
+	"editor.tabSize": 4,
+	"editor.detectIndentation": false,
+	"[svelte]": {
+		"editor.defaultFormatter": "svelte.svelte-vscode"
+	},
+	"svelte.plugin.svelte.compilerWarnings": {
+		"css-unused-selector": "ignore"
+	},
+	"files.associations": {
+		"*.css": "tailwindcss"
+	}
 }

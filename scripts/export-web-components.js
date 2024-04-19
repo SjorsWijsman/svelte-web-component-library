@@ -5,11 +5,11 @@ import { log, error } from "./log.js";
 import { normalizePath } from "vite";
 import "dotenv/config";
 
-const bundleComponents = JSON.parse(process.env.BUNDLE_COMPONENTS);
-const webComponentsPath = "./packages/lib/web-components";
+const bundleComponents = JSON.parse(process.env.BUNDLE_COMPONENTS ?? false);
+const wcDir = normalizePath("../web-components/lib");
 
 // Read the files and directories in the components directory recursively
-fs.readdir(webComponentsPath, { recursive: true }, (err, files) => {
+fs.readdir(wcDir, { recursive: true }, (err, files) => {
     if (err) {
         error("Error reading directory", err);
         return;
@@ -24,14 +24,8 @@ fs.readdir(webComponentsPath, { recursive: true }, (err, files) => {
     const exportStatements = components.map((file) => {
         const componentName = path.basename(file, ".wc.svelte");
 
-        // Calculate the relative path of the component file from the web-components directory
-        const relativeFilePath = path.relative(webComponentsPath, file);
-
         // Construct the correct relative import/export path
-        const exportPath = normalizePath(relativeFilePath).replace(
-            "../../.",
-            ""
-        );
+        const exportPath = `./${file}`;
 
         if (bundleComponents) {
             return `export { default as ${componentName} } from "${exportPath}";`;
@@ -48,16 +42,11 @@ fs.readdir(webComponentsPath, { recursive: true }, (err, files) => {
 
     // Write export statements to the index file
     const content = exportStatements.join("\n");
-    fs.writeFile(
-        "./packages/lib/web-components/index.js",
-        content,
-        { flag: "w" },
-        (err) => {
-            if (err) {
-                error("Error writing to index file", err);
-                return;
-            }
-            log("Library index file updated successfully.");
+    fs.writeFile(`${wcDir}/index.js`, content, { flag: "w" }, (err) => {
+        if (err) {
+            error("Error writing to index file", err);
+            return;
         }
-    );
+        log("Library index file updated successfully.");
+    });
 });

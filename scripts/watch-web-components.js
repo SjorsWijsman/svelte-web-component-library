@@ -1,6 +1,6 @@
 // Watch changes inside packages/lib/web-components & run export-web-components to automatically bundle
 import { runScript } from "./run-script";
-import { normalize } from "path";
+import { normalizePath } from "vite";
 import { log } from "./log.js";
 import chokidar from "chokidar";
 
@@ -9,7 +9,7 @@ export default function watchWebComponents() {
         name: "watch-web-components",
         apply: "serve",
         configureServer(server) {
-            const wcDir = normalize("packages/lib/web-components");
+            const wcDir = normalizePath("../web-components/lib");
 
             // Watch for changes in the component directory
             chokidar
@@ -19,23 +19,23 @@ export default function watchWebComponents() {
                 })
                 .on("ready", () => {
                     // Initialize index.js exports
-                    runScript("node ./scripts/export-web-components.js");
+                    runScript("node ../scripts/export-web-components.js");
                 })
                 .on("all", (event, filePath) => {
-                    const path = normalize(filePath);
+                    const path = normalizePath(filePath);
 
                     // Execute the script only if the changed file is in the component directory
                     if (path.startsWith(wcDir) && path.endsWith(".wc.svelte")) {
                         // Initialize .wc.file on add
                         if (event === "add") {
                             runScript(
-                                `node ./scripts/initialize-web-component.js ${filePath}`
+                                `node ../scripts/initialize-web-component.js ${filePath}`
                             );
                         }
                         // Update exports on add or remove
                         if (["add", "unlink"].includes(event)) {
                             runScript(
-                                "node ./scripts/export-web-components.js"
+                                "node ../scripts/export-web-components.js"
                             );
                         }
                     }

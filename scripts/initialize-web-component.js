@@ -3,7 +3,7 @@ import fs from "fs";
 import "dotenv/config";
 import { log } from "./log.js";
 
-const prefix = process.env.COMPONENT_PREFIX;
+const prefix = process.env.COMPONENT_PREFIX ?? "wc";
 
 if (prefix) {
     // Adds the svelte:options customElement tag to svelte component on creation

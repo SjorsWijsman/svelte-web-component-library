@@ -1,0 +1,21 @@
+{
+	"prefix": "wc",
+	"components": {
+		"test": {
+			"props": {
+				"id": {}
+			},
+			"slots": {
+				"default": "Slotted content"
+			}
+		},
+		"test2": {
+			"props": {
+				"id": {}
+			},
+			"slots": {
+				"default": "Slotted content"
+			}
+		}
+	}
+}
