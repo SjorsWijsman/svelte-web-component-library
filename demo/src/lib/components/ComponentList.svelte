@@ -7,6 +7,7 @@
 
 <ScrollArea class="h-full w-full" style="direction: rtl">
 	<div style="direction: ltr">
+		<Separator />
 		{#each Object.keys($components) as component (component)}
 			{@const active = component === $selectedComponent}
 			<a
