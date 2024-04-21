@@ -7,16 +7,14 @@
 
 	let iframe;
 
+	// On update of componentText
 	componentText.subscribe((component) => iframe?.contentWindow.postMessage({ component }));
 
-	function iframeInitialized(event) {
-		if (event.data === "initialized") {
-			iframe.contentWindow.postMessage({ component: $componentText });
-		}
-	}
+	// If this component is mounted after iframe content
+	onMount(() => {
+		iframe.contentWindow.postMessage({ component: $componentText });
+	});
 </script>
-
-<svelte:window on:message={(e) => iframeInitialized(e)} />
 
 <div class="h-full w-full p-4 flex flex-col">
 	<div class="pb-4 flex items-center gap-2 w-full">

@@ -1,41 +1,19 @@
 {
 	"prefix": "wc",
 	"components": {
-		"test": {
-			"description": "A simple component",
+		"title": {
+			"description": "A title component",
 			"props": {
 				"color": {
 					"type": "select",
 					"options": ["red", "blue"]
 				},
-				"header": {
-					"type": "boolean",
-					"value": true
+				"divider": {
+					"type": "boolean"
 				}
 			},
 			"slots": {
-				"default": "Slotted content"
-			}
-		},
-		"test2": {
-			"description": "A simple component",
-			"props": {
-				"color": {
-					"type": "select",
-					"options": ["red", "blue"]
-				},
-				"secondary": {
-					"type": "boolean",
-					"value": true
-				},
-				"number": {
-					"type": "number",
-					"placeholder": "hallo"
-				},
-				"text": {}
-			},
-			"slots": {
-				"default": "Slotted content"
+				"default": "world"
 			}
 		}
 	}

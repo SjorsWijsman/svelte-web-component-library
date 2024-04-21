@@ -17,7 +17,7 @@
 </script>
 
 <ModeWatcher />
-<Resizable.PaneGroup class="min-h-screen w-screen">
+<Resizable.PaneGroup class="min-h-screen w-screen" direction={"horizontal"}>
 	<Resizable.Pane defaultSize={20}>
 		<section class="relative h-full flex flex-col min-w-64">
 			<h2 class="text-xl p-4 font-bold">Components</h2>
