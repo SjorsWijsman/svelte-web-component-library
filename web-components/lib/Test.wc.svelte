@@ -2,6 +2,7 @@
 
 <script>
 	export let color;
+	export let header = true;
 </script>
 
-<h1 style:color>Hello<slot />!</h1>
+<h1 style:color>Hello <slot />!</h1>

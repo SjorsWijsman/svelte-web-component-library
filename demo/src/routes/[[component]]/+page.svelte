@@ -1,6 +1,7 @@
 <script>
 	import "../../app.pcss";
 	import { Pane, Splitpanes } from "svelte-splitpanes";
+	import * as Resizable from "$lib/components/ui/resizable";
 	import ComponentList from "$lib/components/ComponentList.svelte";
 	import ComponentPreview from "$lib/components/ComponentPreview.svelte";
 	import ComponentControls from "$lib/components/ComponentControls.svelte";
@@ -16,37 +17,23 @@
 </script>
 
 <ModeWatcher />
-<Splitpanes class="min-h-screen w-screen" pushOtherPanes={false}>
-	<Pane>
+<Resizable.PaneGroup class="min-h-screen w-screen">
+	<Resizable.Pane defaultSize={20}>
 		<section class="relative h-full flex flex-col min-w-64">
 			<h2 class="text-xl p-4 font-bold">Components</h2>
 			<ComponentList />
 		</section>
-	</Pane>
-	<Pane size={60} minSize={30}>
+	</Resizable.Pane>
+	<Resizable.Handle class="w-1" />
+	<Resizable.Pane defaultSize={60} minSize={30}>
 		<section class="h-full w-full">
 			<ComponentPreview />
 		</section>
-	</Pane>
-	<Pane>
+	</Resizable.Pane>
+	<Resizable.Handle class="w-1" />
+	<Resizable.Pane defaultSize={20}>
 		<section class="relative h-full flex flex-col min-w-64">
 			<ComponentControls />
 		</section>
-	</Pane>
-</Splitpanes>
-
-<style lang="postcss">
-	:global(.splitpanes__pane) {
-		background-color: hsl(var(--background)) !important;
-	}
-
-	:global(.splitpanes__splitter) {
-		background-color: hsl(var(--muted)) !important;
-		border-left: 0px !important;
-	}
-
-	:global(.splitpanes__splitter::after, .splitpanes__splitter::before) {
-		background-color: hsl(var(--muted-foreground)) !important;
-		opacity: 0.5;
-	}
-</style>
+	</Resizable.Pane>
+</Resizable.PaneGroup>
