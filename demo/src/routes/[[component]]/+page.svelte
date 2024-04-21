@@ -1,6 +1,5 @@
 <script>
 	import "../../app.pcss";
-	import { Pane, Splitpanes } from "svelte-splitpanes";
 	import * as Resizable from "$lib/components/ui/resizable";
 	import ComponentList from "$lib/components/ComponentList.svelte";
 	import ComponentPreview from "$lib/components/ComponentPreview.svelte";
