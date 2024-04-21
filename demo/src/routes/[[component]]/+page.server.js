@@ -1,10 +1,7 @@
-import { readFileSync } from "fs";
+import config from "$wc/web-components.config.js";
 
 export async function load() {
-	const file = await readFileSync("src/demo-components.json", "utf8");
-	const parsed = JSON.parse(file);
-
 	return {
-		...parsed
+		...config
 	};
 }
