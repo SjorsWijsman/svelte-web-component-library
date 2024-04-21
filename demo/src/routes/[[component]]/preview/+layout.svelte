@@ -1,9 +1,12 @@
 <script>
 	import "$wc/lib";
+	import { mode } from "mode-watcher";
 	import { applyPolyfill } from "custom-elements-hmr-polyfill";
 
 	// custom-elements-hmr-polyfill
 	applyPolyfill();
 </script>
 
-<slot />
+<div class={$mode}>
+	<slot />
+</div>

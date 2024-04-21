@@ -1,5 +1,7 @@
 import { writable } from "svelte/store";
+// import persistStore from "$lib/scripts/persist-store";
 
-export let prefix = writable("wc");
-export let components = writable({});
-export let selectedComponent = writable(null);
+export const prefix = writable("wc");
+export const components = writable({});
+export const selectedComponent = writable(null);
+export const componentText = writable("");

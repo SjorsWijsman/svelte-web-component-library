@@ -2,16 +2,42 @@
 	"prefix": "wc",
 	"components": {
 		"test": {
+			"description": "A simple component",
 			"props": {
-				"id": {}
+				"color": {
+					"type": "select",
+					"options": ["red", "blue"]
+				},
+				"secondary": {
+					"type": "boolean",
+					"value": true
+				},
+				"number": {
+					"type": "number",
+					"placeholder": "hallo"
+				},
+				"text": {}
 			},
 			"slots": {
 				"default": "Slotted content"
 			}
 		},
 		"test2": {
+			"description": "A simple component",
 			"props": {
-				"id": {}
+				"color": {
+					"type": "select",
+					"options": ["red", "blue"]
+				},
+				"secondary": {
+					"type": "boolean",
+					"value": true
+				},
+				"number": {
+					"type": "number",
+					"placeholder": "hallo"
+				},
+				"text": {}
 			},
 			"slots": {
 				"default": "Slotted content"

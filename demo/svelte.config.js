@@ -13,7 +13,8 @@ const config = {
 		alias: {
 			$wc: "../web-components/",
 			$store: "./src/store.js"
-		}
+		},
+		embedded: true
 	},
 	preprocess: [
 		preprocess({

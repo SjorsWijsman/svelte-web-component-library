@@ -2,9 +2,9 @@
 	import "../../app.pcss";
 	import { Pane, Splitpanes } from "svelte-splitpanes";
 	import ComponentList from "$lib/components/ComponentList.svelte";
+	import ComponentPreview from "$lib/components/ComponentPreview.svelte";
 	import ComponentControls from "$lib/components/ComponentControls.svelte";
 	import { ModeWatcher } from "mode-watcher";
-	import LightSwitch from "$lib/components/ui/LightSwitch.svelte";
 	import { page } from "$app/stores";
 	import { prefix, components, selectedComponent } from "$store";
 
@@ -12,31 +12,25 @@
 
 	$prefix = data.prefix;
 	$components = data.components;
-	$: $selectedComponent = $page.params.component;
+	$: $selectedComponent = $components[$page.params.component];
 </script>
 
 <ModeWatcher />
 <main class="h-screen w-screen">
 	<Splitpanes class="h-screen w-screen" pushOtherPanes={false}>
 		<Pane>
-			<section class="relative h-full flex flex-col">
-				<h1 class="text-xl p-4 font-bold">Components</h1>
+			<section class="relative h-full flex flex-col min-w-64">
+				<h2 class="text-xl p-4 font-bold">Components</h2>
 				<ComponentList />
-				<LightSwitch />
 			</section>
 		</Pane>
 		<Pane size={60} minSize={30}>
 			<section class="h-full w-full">
-				<iframe
-					src="/{$prefix}-{$page.params.component}/preview"
-					frameborder="0"
-					title="Component Preview"
-					class="h-full w-full"
-				></iframe>
+				<ComponentPreview />
 			</section>
 		</Pane>
 		<Pane>
-			<section class="relative h-full flex flex-col">
+			<section class="relative h-full flex flex-col min-w-64">
 				<ComponentControls />
 			</section>
 		</Pane>

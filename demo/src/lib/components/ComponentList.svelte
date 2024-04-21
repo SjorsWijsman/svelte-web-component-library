@@ -2,24 +2,29 @@
 	import { ScrollArea } from "$lib/components/ui/scroll-area/index.js";
 	import { Separator } from "$lib/components/ui/separator/index.js";
 	import ComponentIcon from "lucide-svelte/icons/component";
-	import { components, selectedComponent } from "$store";
+	import { components } from "$store";
+	import { page } from "$app/stores";
 </script>
 
 <ScrollArea class="h-full w-full" style="direction: rtl">
 	<div style="direction: ltr">
 		<Separator />
 		{#each Object.keys($components) as component (component)}
-			{@const active = component === $selectedComponent}
-			<a
-				class="text-sm flex items-center gap-2 py-2 px-4 {active ? 'bg-muted' : ''}"
-				class:active
-				href={component}
-			>
-				<ComponentIcon
-					class="h-[1rem] w-[1rem] {active ? 'opacity-100' : 'opacity-50'}"
-					strokeWidth="1"
-				/>
-				{component}
+			{@const active = component === $page.params.component}
+			{@const description = $components[component].description}
+			<a class="text-sm py-2 px-4 flex flex-col {active ? 'bg-muted' : ''}" href={component}>
+				<span class="flex items-center gap-2 w-full" class:active>
+					<ComponentIcon
+						class="h-[1rem] w-[1rem] {active ? 'opacity-100' : 'opacity-50'}"
+						strokeWidth="1"
+					/>
+					{component}
+				</span>
+				{#if active && description}
+					<span class="text-muted-foreground">
+						{description}
+					</span>
+				{/if}
 			</a>
 			<Separator />
 		{/each}
