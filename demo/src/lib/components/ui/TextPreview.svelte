@@ -6,8 +6,8 @@
 	let componentSlots = "";
 
 	// Update content on prop/slot change
-	$: updatePropContent($selectedComponent.props);
-	$: updateSlotContent($selectedComponent.slots);
+	$: updatePropContent($selectedComponent?.props);
+	$: updateSlotContent($selectedComponent?.slots);
 
 	// Parse prop object to string to pass to component
 	function updatePropContent(props) {

@@ -7,12 +7,16 @@
 	import { ModeWatcher } from "mode-watcher";
 	import { page } from "$app/stores";
 	import { prefix, components, selectedComponent } from "$store";
+	import { goto } from "$app/navigation";
+	import { browser } from "$app/environment";
 
 	export let data;
 
 	$prefix = data.prefix;
 	$components = data.components;
 	$: $selectedComponent = $components[$page.params.component];
+
+	if (!$page.params.component && browser) goto(Object.keys($components)[0]);
 </script>
 
 <ModeWatcher />

@@ -7,7 +7,7 @@
 
 	let props, slots;
 
-	$: [props, slots] = [{ ...$selectedComponent.props }, { ...$selectedComponent.slots }];
+	$: [props, slots] = [$selectedComponent?.props, $selectedComponent?.slots];
 
 	// Trigger store update
 	$: $selectedComponent = $selectedComponent;
