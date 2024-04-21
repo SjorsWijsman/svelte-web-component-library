@@ -4,4 +4,4 @@
 	export let color;
 </script>
 
-<h1 style:color>Hello <slot />!</h1>
+<h1 style:color>Hello<slot />!</h1>

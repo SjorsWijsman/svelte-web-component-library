@@ -1,10 +1,22 @@
 <script>
-	import { page } from "$app/stores";
-	import { prefix, componentText } from "$store";
+	import { componentText } from "$store";
 	import TextPreview from "$lib/components/ui/TextPreview.svelte";
 	import LightSwitch from "$lib/components/ui/LightSwitch.svelte";
 	import Copy from "$lib/components/ui/Copy.svelte";
+	import { onMount } from "svelte";
+
+	let iframe;
+
+	componentText.subscribe((component) => iframe?.contentWindow.postMessage({ component }));
+
+	function iframeInitialized(event) {
+		if (event.data === "initialized") {
+			iframe.contentWindow.postMessage({ component: $componentText });
+		}
+	}
 </script>
+
+<svelte:window on:message={(e) => iframeInitialized(e)} />
 
 <div class="h-full w-full p-4 flex flex-col">
 	<div class="pb-4 flex items-center gap-2 w-full">
@@ -15,7 +27,8 @@
 		</div>
 	</div>
 	<iframe
-		src="/{$prefix}-{$page.params.component}/preview?component={$componentText}"
+		bind:this={iframe}
+		src="/preview"
 		frameborder="0"
 		title="Component Preview"
 		class="h-full w-full border border-dashed border-muted border-1"

@@ -8,15 +8,10 @@
 					"type": "select",
 					"options": ["red", "blue"]
 				},
-				"secondary": {
+				"header": {
 					"type": "boolean",
 					"value": true
-				},
-				"number": {
-					"type": "number",
-					"placeholder": "hallo"
-				},
-				"text": {}
+				}
 			},
 			"slots": {
 				"default": "Slotted content"

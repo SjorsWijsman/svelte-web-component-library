@@ -7,7 +7,7 @@
 </script>
 
 {#if slots && Object.keys(slots).length}
-	{#each Object.keys(slots) as name (`${$page.params.component}-${name}`)}
+	{#each Object.keys(slots) as name (name)}
 		<div class="py-3 flex flex-col gap-2">
 			<Label for={name}>{name}</Label>
 			<Textarea placeholder="Your slot content." id={name} bind:value={slots[name]} />
