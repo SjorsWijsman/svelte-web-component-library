@@ -1,0 +1,19 @@
+{
+	"name": "web-components",
+	"version": "1.0.0",
+	"type": "module",
+	"module": "dist/svelte-web-component-library.js",
+	"main": "dist/svelte-web-component-library.umd.js",
+	"scripts": {
+		"prebuild": "node ../scripts/export-web-components.js",
+		"build": "vite build",
+		"build:watch": "vite build --watch"
+	},
+	"devDependencies": {
+		"sass": "^1.71.1",
+		"svelte-check": "^3.6.6"
+	},
+	"files": [
+		"dist/lib"
+	]
+}

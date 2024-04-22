@@ -4,16 +4,15 @@ import { transform } from "esbuild";
 import pkg from "../package.json";
 import path from "path";
 
-import config from "../web-components/web-components.config.js";
+import config from "./web-components.config.js";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	root: "./web-components/",
 	build: {
 		outDir: "../dist/",
 		emptyOutDir: true,
 		lib: {
-			entry: "./index.js",
+			entry: "./lib/index.js",
 			formats: config.bundleComponents ? ["es", "esm", "umd"] : ["es"],
 			name: pkg.name.replace(/-./g, (char) => char[1].toUpperCase()),
 			fileName: (format) =>

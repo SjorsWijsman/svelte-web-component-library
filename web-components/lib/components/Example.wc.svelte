@@ -7,16 +7,20 @@
 <script>
 	// JavaScript goes here
 	console.log("Hello world!");
+
+    export let color = "red";
 </script>
 
-<p>
-	Hello World
-	<slot />
+<p style:color>
+	Hello
+	<slot>
+        World
+    </slot>!
 </p>
 
 <style lang="scss">
 	// Style goes here
 	p {
-		color: red;
+		font-weight: bold;
 	}
 </style>
