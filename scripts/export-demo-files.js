@@ -1,9 +1,8 @@
-// This script automatically adds .wc.svelte exports
+// This script automatically adds .demo.js exports
 import fs from "fs";
 import path from "path";
 import { log, error } from "./log.js";
 import { normalizePath } from "vite";
-import config from "../web-components/web-components.config.js";
 
 const wcDir = normalizePath("../web-components/lib/components");
 
@@ -14,36 +13,32 @@ fs.readdir(wcDir, { recursive: true }, (err, files) => {
 		return;
 	}
 
-	// Select web-component svelte files
-	const components = files.filter((file) => file.endsWith(".wc.svelte") && !file.startsWith("."));
+	// Select demo files
+	const components = files.filter((file) => file.endsWith(".demo.js") && !file.startsWith("."));
+
 	// Generate export statements for each Svelte component
 	const exportStatements = components.map((file) => {
-		const componentName = path.basename(file, ".wc.svelte");
+		const componentName = path.basename(file, ".demo.js");
 
 		// Construct the correct relative import/export path
 		const exportPath = normalizePath(`${file}`);
 
-		if (config.bundleComponents) {
-			return `export { default as ${componentName} } from "./${exportPath}";`;
-		} else {
-			return `import("${exportPath}");`;
-		}
+		return `export { default as ${componentName} } from "./${exportPath}";`;
 	});
 
 	exportStatements.unshift(
 		"// !!!\n// These exports are automatically generated while running the dev server or before a build.\n// Do not modify manually.\n// !!!"
 	);
 
-	log(`Updating .wc exports...`);
+	log(`Updating .demo exports...`);
 
 	// Write export statements to the index file
 	const content = exportStatements.join("\n");
-
-	fs.writeFile(`${wcDir}/index.js`, content, { flag: "w" }, (err) => {
+	fs.writeFile(`${wcDir}/demo.js`, content, { flag: "w" }, (err) => {
 		if (err) {
-			error("Error writing to index file", err);
+			error("Error writing to demo file", err);
 			return;
 		}
-		log("Library index file updated successfully.");
+		log("Library demo file updated successfully.");
 	});
 });

@@ -1,4 +1,6 @@
 <script>
+	import { onMount } from "svelte";
+
 	let component;
 
 	function updateComponent(event) {
@@ -6,6 +8,10 @@
 			component = event.data.component;
 		}
 	}
+
+	onMount(() => {
+		parent.postMessage("intialized", "*");
+	});
 </script>
 
 <svelte:window on:message={(e) => updateComponent(e)} />

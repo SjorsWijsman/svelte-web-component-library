@@ -7,7 +7,7 @@
 </script>
 
 <ScrollArea class="h-full w-full" style="direction: rtl">
-	<div style="direction: ltr">
+	<div style="direction: ltr" class="pb-16">
 		<Separator />
 		{#each Object.keys($components) as component (component)}
 			{@const active = component === $page.params.component}
@@ -18,10 +18,19 @@
 						class="h-[1rem] w-[1rem] {active ? 'opacity-100' : 'opacity-50'}"
 						strokeWidth="1"
 					/>
-					{component}
+					{#if $components[component].group}
+						<span
+							class="text-muted-foreground font-normal text-ellipsis whitespace-nowrap overflow-hidden"
+						>
+							{$components[component].group} /
+							<span class:active class="text-foreground">{component}</span>
+						</span>
+					{:else}
+						{component}
+					{/if}
 				</span>
 				{#if active && description}
-					<span class="text-muted-foreground">
+					<span class="text-muted-foreground text-xs">
 						{description}
 					</span>
 				{/if}

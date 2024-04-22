@@ -9,7 +9,7 @@ export default function watchWebComponents() {
 		name: "watch-web-components",
 		apply: "serve",
 		configureServer() {
-			const wcDir = normalizePath("../web-components/lib");
+			const wcDir = normalizePath("../web-components/lib/components");
 
 			// Watch for changes in the component directory
 			chokidar
@@ -33,6 +33,17 @@ export default function watchWebComponents() {
 						// Update exports on add or remove
 						if (["add", "unlink"].includes(event)) {
 							runScript("node ../scripts/export-web-components.js");
+						}
+					}
+
+					if (path.startsWith(wcDir) && path.endsWith(".demo.js")) {
+						// Initialize .demo.js on add
+						if (event === "add") {
+							runScript(`node ../scripts/initialize-demo-file.js ${filePath}`);
+						}
+						// Update exports on add or remove
+						if (["add", "unlink"].includes(event)) {
+							runScript("node ../scripts/export-demo-files.js");
 						}
 					}
 				});

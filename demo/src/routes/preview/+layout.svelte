@@ -8,12 +8,16 @@
 	if (browser) applyPolyfill();
 </script>
 
-<div class={$mode}>
+<main class={$mode}>
 	<slot />
-</div>
+</main>
 
 <style>
 	:global(*:not(:defined)) {
 		opacity: 0;
+	}
+
+	main {
+		padding: 2rem;
 	}
 </style>

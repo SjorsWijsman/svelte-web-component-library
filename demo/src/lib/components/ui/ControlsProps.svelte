@@ -2,7 +2,7 @@
 	import { Label } from "$lib/components/ui/label";
 	import { Input } from "$lib/components/ui/input";
 	import * as Props from "$lib/components/ui/props";
-	import { page } from "$app/stores";
+	import { Textarea } from "$lib/components/ui/textarea";
 
 	export let props;
 </script>
@@ -17,6 +17,12 @@
 				<Props.Select {name} options={props[name].options} bind:value={props[name].value} />
 			{:else if type === "boolean"}
 				<Props.Boolean {name} bind:value={props[name].value} />
+			{:else if type === "textarea"}
+				<Textarea
+					id={name}
+					bind:value={props[name].value}
+					placeholder={props[name].placeholder}
+				/>
 			{:else}
 				<Input
 					{type}

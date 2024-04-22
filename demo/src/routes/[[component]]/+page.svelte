@@ -16,10 +16,18 @@
 </script>
 
 <ModeWatcher />
-<Resizable.PaneGroup class="min-h-screen w-screen" direction={"horizontal"}>
+<Resizable.PaneGroup
+	class="max-h-screen min-h-screen max-w-screen min-w-screen"
+	direction={"horizontal"}
+>
 	<Resizable.Pane defaultSize={20}>
 		<section class="relative h-full flex flex-col min-w-64">
-			<h2 class="text-xl p-4 font-bold">Components</h2>
+			<h2 class="text-xl p-4 font-bold">
+				Components
+				<span class="text-muted-foreground font-normal">
+					({Object.keys($components).length})
+				</span>
+			</h2>
 			<ComponentList />
 		</section>
 	</Resizable.Pane>

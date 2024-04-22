@@ -1,7 +1,6 @@
 <script>
 	import { Label } from "$lib/components/ui/label";
 	import { Textarea } from "$lib/components/ui/textarea";
-	import { page } from "$app/stores";
 
 	export let slots;
 </script>

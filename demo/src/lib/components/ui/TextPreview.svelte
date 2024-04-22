@@ -37,7 +37,16 @@
 	}
 
 	function generateComponentText(component) {
-		let tag = `${$prefix}-${$page.params.component}`;
+		let pre = $prefix;
+		if (component.prefix) {
+			pre = component.prefix;
+			if (component.prefix === "none") {
+				pre = "";
+			}
+		}
+		pre = pre ? pre + "-" : "";
+
+		let tag = `${pre}${$page.params.component}`;
 		let result = `<${tag}${componentProps}>${componentSlots}</${tag}>`;
 		return result;
 	}
