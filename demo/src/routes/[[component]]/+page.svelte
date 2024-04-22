@@ -22,12 +22,12 @@
 >
 	<Resizable.Pane defaultSize={20}>
 		<section class="relative h-full flex flex-col min-w-64">
-			<h2 class="text-xl p-4 font-bold">
+			<a class="text-xl p-4 font-bold" href="/">
 				Components
 				<span class="text-muted-foreground font-normal">
 					({Object.keys($components).length})
 				</span>
-			</h2>
+			</a>
 			<ComponentList />
 		</section>
 	</Resizable.Pane>

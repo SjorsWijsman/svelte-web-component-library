@@ -38,6 +38,12 @@
 		src="/preview"
 		frameborder="0"
 		title="Component Preview"
-		class="h-full w-full border border-dashed border-muted border-1"
+		class="h-full w-full border border-muted border-1"
 	></iframe>
 </div>
+
+<style>
+    iframe {
+        border: 1px solid hsla(0, 0%, 60%, 0.2)
+    }
+</style>
