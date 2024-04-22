@@ -8,7 +8,9 @@ const path = normalizePath(process.argv[2]);
 // Read the content of the file
 const fileContent = fs.readFileSync(path, "utf-8");
 
-const group = path.split("/components/")[1].split("/")[0];
+let group = path.split("/components/")[1].split("/")[0];
+let filename = path.split("/").slice(-1)[0];
+if (group === filename) group = null;
 
 // Check if the file is empty
 if (fileContent.trim().length === 0) {
@@ -16,8 +18,7 @@ if (fileContent.trim().length === 0) {
 	// If the file is empty, add the svelte:options tag with prefix and kebab cased name
 	fs.writeFileSync(
 		path,
-		`export const demo = {
-    ${group ? `group: "${group}",` : ""}
+		`export const demo = {${group ? `\n	group: "${group}",` : ""}
     description: "",
     props: {},
     slots: {}
