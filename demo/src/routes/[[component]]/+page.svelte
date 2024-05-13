@@ -34,7 +34,13 @@
 	<Resizable.Handle class="w-1" />
 	<Resizable.Pane defaultSize={60} minSize={30}>
 		<section class="h-full w-full">
-			<ComponentPreview />
+			{#if $selectedComponent}
+				<ComponentPreview />
+			{:else}
+				<div class="flex items-center justify-center h-full">
+					<p class="text-2xl text-muted-foreground">Select a component</p>
+				</div>
+			{/if}
 		</section>
 	</Resizable.Pane>
 	<Resizable.Handle class="w-1" />
