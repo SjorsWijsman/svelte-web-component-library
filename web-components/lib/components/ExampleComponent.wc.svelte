@@ -2,7 +2,7 @@
     Svelte documentation:
     https://svelte.dev/docs/custom-elements-api
 -->
-<svelte:options customElement="wc-example" />
+<svelte:options customElement="wc-example-component" />
 
 <script>
 	// JavaScript goes here
