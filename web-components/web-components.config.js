@@ -1,6 +1,6 @@
 export const config = {
-	bundleComponents: true,
 	prefix: "wc",
+	bundleComponents: true,
 	outDir: "../dist/"
 };
 
