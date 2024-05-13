@@ -4,7 +4,7 @@
 
 This template makes it easy to create, preview and build your web component library with Svelte.
 
-![Banner preview](https://raw.githubusercontent.com/SjorsWijsman/svelte-web-component-library/main/docs/swct-banner.png)
+![Banner preview](https://github.com/SjorsWijsman/svelte-web-component-library/blob/main/docs/swct-banner.PNG?raw=true)
 
 ## Getting started
 
