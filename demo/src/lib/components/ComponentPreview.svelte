@@ -2,6 +2,7 @@
 	import { componentText } from "$store";
 	import TextPreview from "$lib/components/ui/TextPreview.svelte";
 	import LightSwitch from "$lib/components/ui/LightSwitch.svelte";
+	import * as Tooltip from "$lib/components/ui/tooltip";
 	import Copy from "$lib/components/ui/Copy.svelte";
 	import { onMount } from "svelte";
 
@@ -29,8 +30,22 @@
 	<div class="pb-4 flex items-center gap-2 w-full">
 		<TextPreview />
 		<div class="flex gap-1 ml-auto">
-			<LightSwitch />
-			<Copy />
+			<Tooltip.Root>
+				<Tooltip.Trigger>
+					<LightSwitch />
+				</Tooltip.Trigger>
+				<Tooltip.Content>
+					<p>Switch theme</p>
+				</Tooltip.Content>
+			</Tooltip.Root>
+			<Tooltip.Root>
+				<Tooltip.Trigger>
+					<Copy />
+				</Tooltip.Trigger>
+				<Tooltip.Content>
+					<p>Copy to clipboard</p>
+				</Tooltip.Content>
+			</Tooltip.Root>
 		</div>
 	</div>
 	<iframe
@@ -43,7 +58,7 @@
 </div>
 
 <style>
-    iframe {
-        border: 1px solid hsla(0, 0%, 60%, 0.2)
-    }
+	iframe {
+		border: 1px solid hsla(0, 0%, 60%, 0.2);
+	}
 </style>

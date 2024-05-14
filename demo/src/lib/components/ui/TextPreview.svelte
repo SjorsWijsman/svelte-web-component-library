@@ -52,6 +52,6 @@
 	}
 </script>
 
-<span class="text-ellipsis whitespace-nowrap overflow-hidden text-muted-foreground">
+<span class="text-ellipsis whitespace-nowrap overflow-hidden text-muted-foreground text-sm">
 	{$componentText}
 </span>
