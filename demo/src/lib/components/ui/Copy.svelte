@@ -28,7 +28,7 @@
 	{#if !success}
 		<CopyIcon class="h-[1.2rem] w-[1.2rem]" />
 	{:else}
-		<CopyIconSuccess class="h-[1.2rem] w-[1.2rem]" color="#22c55e" />
+		<CopyIconSuccess class="h-[1.2rem] w-[1.2rem] scale-110" color="#22c55e" />
 	{/if}
 	<span class="sr-only">Copy content</span>
 </Button>

@@ -12,6 +12,7 @@
 
 	$prefix = data.prefix;
 	$components = data.components;
+
 	$: $selectedComponent = $components[$page.params.component];
 </script>
 

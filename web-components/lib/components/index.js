@@ -3,3 +3,4 @@
 // Do not modify manually.
 // !!!
 export { default as ExampleComponent } from "./ExampleComponent.wc.svelte";
+export { default as ExampleComponentTwo } from "./ExampleComponentTwo.wc.svelte";

@@ -1,10 +1,7 @@
 <script>
 	import { componentText } from "$store";
-	import TextPreview from "$lib/components/ui/TextPreview.svelte";
-	import LightSwitch from "$lib/components/ui/LightSwitch.svelte";
-	import * as Tooltip from "$lib/components/ui/tooltip";
-	import Copy from "$lib/components/ui/Copy.svelte";
 	import { onMount } from "svelte";
+	import PreviewControls from "$lib/components/PreviewControls.svelte";
 
 	let iframe;
 
@@ -27,27 +24,7 @@
 <svelte:window on:message={(e) => iframeInitialized(e)} />
 
 <div class="h-full w-full p-4 flex flex-col">
-	<div class="pb-4 flex items-center gap-2 w-full">
-		<TextPreview />
-		<div class="flex gap-1 ml-auto">
-			<Tooltip.Root>
-				<Tooltip.Trigger>
-					<LightSwitch />
-				</Tooltip.Trigger>
-				<Tooltip.Content>
-					<p>Switch theme</p>
-				</Tooltip.Content>
-			</Tooltip.Root>
-			<Tooltip.Root>
-				<Tooltip.Trigger>
-					<Copy />
-				</Tooltip.Trigger>
-				<Tooltip.Content>
-					<p>Copy to clipboard</p>
-				</Tooltip.Content>
-			</Tooltip.Root>
-		</div>
-	</div>
+	<PreviewControls />
 	<iframe
 		bind:this={iframe}
 		src="/preview"

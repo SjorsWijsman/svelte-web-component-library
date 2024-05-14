@@ -16,9 +16,9 @@
 		for (let prop of Object.keys(props)) {
 			if (props[prop].value) {
 				if (props[prop].type === "boolean") {
-					componentProps += ` ${prop}`;
+					componentProps += ` ${prop.replace(/\_\d{6}$/, "")}`;
 				} else {
-					componentProps += ` ${prop}="${props[prop].value}"`;
+					componentProps += ` ${prop.replace(/\_\d{6}$/, "")}="${props[prop].value}"`;
 				}
 			}
 		}

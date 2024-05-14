@@ -2,7 +2,7 @@
     Svelte documentation:
     https://svelte.dev/docs/custom-elements-api
 -->
-<svelte:options customElement="wc-example-component" />
+<svelte:options customElement="wc-example-component-two" />
 
 <script>
 	console.log("Hello world!");
