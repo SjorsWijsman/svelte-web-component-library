@@ -18,4 +18,5 @@
 
 {#if component}
 	{@html component}
+	<p>Hello!</p>
 {/if}

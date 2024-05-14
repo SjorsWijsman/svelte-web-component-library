@@ -17,7 +17,6 @@
 </p>
 
 <style lang="scss">
-	// Style goes here
 	p {
 		font-weight: bold;
 	}

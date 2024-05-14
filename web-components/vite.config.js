@@ -40,26 +40,13 @@ export default defineConfig({
 			}
 		}),
 		svelte({
-			include: /\.wc\.svelte$/,
-			onwarn: (warning, handler) => {
-				const { code, frame } = warning;
-				if (code === "css-unused-selector") return;
-
-				handler(warning);
-			}
+			include: /\.wc\.svelte$/
 		}),
 		minifyEs()
 	],
 	resolve: {
 		alias: {
 			$lib: path.resolve(__dirname, "web-components/lib")
-		}
-	},
-	css: {
-		preprocessorOptions: {
-			scss: {
-				includePaths: [path.resolve(__dirname, "web-components/style")]
-			}
 		}
 	}
 });
