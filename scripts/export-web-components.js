@@ -26,7 +26,7 @@ fs.readdir(wcDir, { recursive: true }, (err, files) => {
 		if (config.bundleComponents) {
 			return `export { default as ${componentName} } from "./${exportPath}";`;
 		} else {
-			return `import("${exportPath}");`;
+			return `import("./${exportPath}");`;
 		}
 	});
 
