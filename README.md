@@ -52,7 +52,7 @@ If the dev server is running, the `customElements` tag will automatically be add
 
 ### .demo.js
 
-You might have noticed that our new component doesn't yet show up in the component library frontend. To preview our component, a `.demo.js` file needs to be created. Name it the same as its respective `.wc.svelte` file: `MyComponent.demo.js`. The file will be automatically filled with some boilerplate, and the component will now appear in the frontend. Any changes to the `.wc.svelte` component will be automatically reflected in the demo environment, making it easy to develop your component. Inside the `.demo.js` file, you can add a description and define the props and slots the component exposes. Here’s a basic example with two props and a default slot:
+You might have noticed that our new component doesn't yet show up in the component library frontend. To preview our component, a `.demo.js` file needs to be created. Name it the same as its respective `.wc.svelte` file: `MyComponent.demo.js`. The file will be automatically filled with some boilerplate, and the component will now appear in the frontend. Now, any changes to the `.wc.svelte` component will be automatically reflected in the demo environment, making it easy to develop your component. Inside the `.demo.js` file, you can add a description and define the props and slots the component exposes. Here’s a basic example with two props and a default slot:
 
 ```javascript
 // web-components/lib/components/ExampleComponent.demo.js
