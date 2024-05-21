@@ -1,5 +1,8 @@
 <script>
-	import { codeToHtml } from "shiki";
+	import { getHighlighterCore } from "shiki/core";
+	import getWasm from "shiki/wasm";
+
+	import { onMount } from "svelte";
 
 	let className = undefined;
 	export { className as class };
@@ -8,8 +11,20 @@
 
 	let output = null;
 
+	let highlighter;
+
+	onMount(async () => {
+		highlighter = await getHighlighterCore({
+			themes: [import("shiki/themes/light-plus.mjs"), import("shiki/themes/dark-plus.mjs")],
+			langs: [import("shiki/langs/html.mjs")],
+			loadWasm: getWasm
+		});
+		highlight(value);
+	});
+
 	async function highlight(input) {
-		output = await codeToHtml(input ?? "", {
+		if (!highlighter) return;
+		output = await highlighter.codeToHtml(input ?? "", {
 			lang: "html",
 			themes: {
 				light: "light-plus",
