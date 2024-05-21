@@ -1,12 +1,14 @@
-# Svelte Web Component Library
-
 > Based on sinedied's [svelte-web-components-template](https://github.com/sinedied/svelte-web-components-template).
+
+# Svelte Web Component Library
 
 ### ⚠️ Early Version Warning
 
 _This is an early version. Documentation and features are still in development. Feel free to use and collaborate._
 
 <br>
+
+## Introduction
 
 This template makes it easy to create, preview, and build your web component library with Svelte.
 
