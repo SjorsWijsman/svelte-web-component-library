@@ -93,8 +93,8 @@ _Other values will "fall through" and be passed as a type to an input field. You
 ...
     props: {
         text: {},
-		type: {
-			type: "select",
+        state: {
+            type: "select",
 			options: ["primary", "secondary", "blue"],
 			default: "red"
 		},
@@ -105,7 +105,7 @@ _Other values will "fall through" and be passed as a type to an input field. You
             type: "textarea",
             default: "Tooltip content"
         },
-	},
+    },
 ...
 ```
 
@@ -118,7 +118,7 @@ Slots are defined similarly to props, with the key acting as the title of the sl
 ...
 	slots: {
         header: "Hello",
-		default: "World"
+        default: "World"
 	}
 ...
 ```
