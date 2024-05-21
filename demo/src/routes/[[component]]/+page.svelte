@@ -12,8 +12,17 @@
 
 	$prefix = data.prefix;
 	$components = data.components;
+
 	$: $selectedComponent = $components[$page.params.component];
 </script>
+
+<svelte:head>
+	<title>
+		{$page.params.component
+			? `<${$prefix}-${$page.params.component} />`
+			: "Svelte Component Library"}
+	</title>
+</svelte:head>
 
 <ModeWatcher />
 <Resizable.PaneGroup

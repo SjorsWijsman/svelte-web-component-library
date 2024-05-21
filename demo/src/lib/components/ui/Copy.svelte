@@ -1,5 +1,6 @@
 <script>
 	import CopyIcon from "lucide-svelte/icons/copy";
+	import CopyIconSuccess from "lucide-svelte/icons/copy-check";
 	import { Button } from "$lib/components/ui/button/index.js";
 	import { componentText } from "$store";
 
@@ -24,6 +25,10 @@
 </script>
 
 <Button on:click={() => copy()} variant="outline" size="icon">
-	<CopyIcon class="h-[1.2rem] w-[1.2rem]" />
+	{#if !success}
+		<CopyIcon class="h-[1.2rem] w-[1.2rem]" />
+	{:else}
+		<CopyIconSuccess class="h-[1.2rem] w-[1.2rem] scale-110" color="#22c55e" />
+	{/if}
 	<span class="sr-only">Copy content</span>
 </Button>

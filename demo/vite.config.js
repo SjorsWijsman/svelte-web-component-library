@@ -10,6 +10,7 @@ function fullReloadOnWebComponentChange() {
 	return {
 		name: "custom-watcher",
 		configureServer(server) {
+			// Full reload on web component file changes
 			server.watcher.add("$wc/lib");
 			server.watcher.on("add", onWatchChange);
 			server.watcher.on("unlink", onWatchChange);

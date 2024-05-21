@@ -3,6 +3,7 @@
 	import { cn } from "$lib/utils.js";
 	let className = undefined;
 	export { className as class };
+	export let name;
 </script>
 
 <LabelPrimitive.Root
@@ -13,5 +14,5 @@
 	{...$$restProps}
 	on:mousedown
 >
-	<slot />
+	<slot>{name.replace(/\_\d{6}$/, "")}</slot>
 </LabelPrimitive.Root>

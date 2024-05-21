@@ -20,7 +20,7 @@ npm install
 
 ## Building & importing your component library
 
-Run `npm run build` to build your component library to the `/dist/` folder.
-If you want to automatically run a build when a change has occured, run `npm run build:watch`.
-You can change the output folder by updating the `outDir` property inside `/web-components/web-components.config.js`.
-Build every component to a separate file by changing `bundleComponents` inside `/web-components/web-components.config.js` to `false`.
+-   Run `npm run build` to build your component library to the `/dist/` folder.
+-   If you want to automatically run a build when a change has occured, run `npm run build:watch`.
+-   You can change the output folder by updating the `outDir` property inside `/web-components/web-components.config.js`.
+-   Build every component to a separate file by changing `bundleComponents` inside `/web-components/web-components.config.js` to `false`.
