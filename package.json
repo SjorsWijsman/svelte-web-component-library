@@ -4,23 +4,11 @@
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
-		"postinstall": "(cd demo && npm install) && (cd web-components && npm install);",
+		"postinstall": "cd ./demo && npm install && cd ../web-components && npm install",
 		"build": "cd ./web-components & npm run build",
 		"build:watch": "cd ./web-components & npm run build:watch",
 		"build:demo": "cd ./demo & npm run build",
 		"dev": "cd ./demo & npm run dev"
-	},
-	"devDependencies": {
-		"@sveltejs/vite-plugin-svelte": "^3.1.0",
-		"@types/eslint": "^8.56.10",
-		"eslint": "^9.1.0",
-		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-svelte": "^2.37.0",
-		"prettier": "^3.2.5",
-		"prettier-plugin-svelte": "^3.2.3",
-		"svelte": "^4.2.15",
-		"svelte-preprocess": "^5.1.4",
-		"vite": "^5.2.10"
 	},
 	"files": [
 		"dist"
