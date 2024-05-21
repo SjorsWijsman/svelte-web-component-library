@@ -7,7 +7,8 @@
 	"scripts": {
 		"prebuild": "node ../scripts/export-web-components.js",
 		"build": "vite build",
-		"build:watch": "vite build --watch"
+		"build:watch": "vite build --watch",
+		"postinstall": "(cd demo && npm install) && (cd web-components && npm install);"
 	},
 	"devDependencies": {
 		"sass": "^1.71.1",
