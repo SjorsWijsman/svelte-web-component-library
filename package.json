@@ -4,6 +4,7 @@
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
+		"postinstall": "(cd demo && npm install) && (cd web-components && npm install);",
 		"build": "cd ./web-components & npm run build",
 		"build:watch": "cd ./web-components & npm run build:watch",
 		"build:demo": "cd ./demo & npm run build",
