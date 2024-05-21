@@ -8,7 +8,7 @@
 	if (browser) applyPolyfill();
 </script>
 
-<main class="{$mode}">
+<main class={$mode}>
 	<slot />
 </main>
 
@@ -18,7 +18,8 @@
 	}
 
 	main {
+		position: relative;
 		margin: 2rem;
-        border: 1px dashed hsla(0, 0%, 60%, 0.3);
+		border: 1px dashed hsla(0, 0%, 60%, 0.3);
 	}
 </style>
