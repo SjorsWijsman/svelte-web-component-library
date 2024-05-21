@@ -46,6 +46,7 @@
 		class={className}
 		bind:value
 		{readonly}
+		wrap="off"
 		autocapitalize="off"
 		autocomplete="off"
 		autocorrect="off"
@@ -97,6 +98,7 @@
 		resize: none;
 		line-height: 1.5em;
 		padding: 0.25rem;
+		white-space: nowrap;
 	}
 
 	:global(.dark) textarea {
