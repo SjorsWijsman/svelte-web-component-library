@@ -52,10 +52,12 @@
 			{/if}
 		</section>
 	</Resizable.Pane>
-	<Resizable.Handle class="w-1" />
-	<Resizable.Pane defaultSize={20}>
-		<section class="relative h-full flex flex-col min-w-64">
-			<ComponentControls />
-		</section>
-	</Resizable.Pane>
+	{#if $selectedComponent}
+		<Resizable.Handle class="w-1" />
+		<Resizable.Pane defaultSize={20}>
+			<section class="relative h-full flex flex-col min-w-64">
+				<ComponentControls />
+			</section>
+		</Resizable.Pane>
+	{/if}
 </Resizable.PaneGroup>

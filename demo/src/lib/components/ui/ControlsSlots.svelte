@@ -1,6 +1,6 @@
 <script>
 	import { Label } from "$lib/components/ui/label";
-	import { Textarea } from "$lib/components/ui/textarea";
+	import { Textarea } from "$lib/components/ui/textarea-highlighted";
 
 	export let slots;
 </script>
@@ -9,7 +9,7 @@
 	{#each Object.keys(slots) as name (name)}
 		<div class="py-3 flex flex-col gap-2">
 			<Label for={name}>{name}</Label>
-			<Textarea placeholder="Your slot content." id={name} bind:value={slots[name]} />
+			<Textarea placeholder="Your slot content" id={name} bind:value={slots[name]} />
 		</div>
 	{/each}
 {:else}

@@ -5,6 +5,9 @@ export const demo = {
 			type: "select",
 			options: ["red", "green", "blue"],
 			default: "red"
+		},
+		underline: {
+			type: "boolean"
 		}
 	},
 	slots: {
