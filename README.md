@@ -1,12 +1,14 @@
-# Svelte Web Component Library
+> Based on sinedied's [svelte-web-components-template](https://github.com/sinedied/svelte-web-components-template).
 
-Based on sinedied's [svelte-web-components-template](https://github.com/sinedied/svelte-web-components-template).
+# Svelte Web Component Library
 
 ### ⚠️ Early Version Warning
 
 _This is an early version. Documentation and features are still in development. Feel free to use and collaborate._
 
 <br>
+
+## Introduction
 
 This template makes it easy to create, preview, and build your web component library with Svelte.
 
@@ -26,7 +28,7 @@ cd svelte-web-component-library
 npm install
 ```
 
-_Note that both the `/demo` and `/web-components` folders contain their own package that needs to be installed. The `postinstall` script should automatically handle this._
+_Note that, as this is a monorepo, both the `/demo` and `/web-components` folders contain their own package that needs to be installed. The `postinstall` script should automatically handle this._
 
 <br>
 
@@ -131,3 +133,21 @@ Slots are defined similarly to props, with the key acting as the title of the sl
 -   To automatically run a build when changes occur, use `npm run build:watch`.
 -   You can change the output folder by updating the `outDir` property in `/web-components/web-components.config.js`.
 -   To build each component into a separate file, set `bundleComponents` to `false` in `/web-components/web-components.config.js`.
+
+This dist can now be imported into any HTML environment and used as a component library:
+
+```html
+<html lang="en">
+	<body>
+		<main>
+			<wc-example-component color="green" underline>World!!</wc-example-component>
+		</main>
+
+		<!-- Import component library after body content -->
+		<script
+			type="module"
+			src="./svelte-web-components/dist/svelte-web-components.umd.js"
+		></script>
+	</body>
+</html>
+```
