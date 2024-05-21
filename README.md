@@ -91,21 +91,21 @@ _Other values will "fall through" and be passed as a type to an input field. You
 ```javascript
 // web-components/lib/components/MyComponent.demo.js
 ...
-    props: {
-        text: {},
-        state: {
-            type: "select",
+	props: {
+		text: {},
+		state: {
+			type: "select",
 			options: ["primary", "secondary", "blue"],
 			default: "red"
 		},
 		disabled: {
 			type: "boolean"
 		},
-        tooltip: {
-            type: "textarea",
-            default: "Tooltip content"
-        },
-    },
+		tooltip: {
+			type: "textarea",
+			default: "Tooltip content"
+		},
+	},
 ...
 ```
 
@@ -117,8 +117,8 @@ Slots are defined similarly to props, with the key acting as the title of the sl
 // web-components/lib/components/MyComponent.demo.js
 ...
 	slots: {
-        header: "Hello",
-        default: "World"
+		header: "Hello",
+		default: "World"
 	}
 ...
 ```
