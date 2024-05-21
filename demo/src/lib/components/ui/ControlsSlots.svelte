@@ -1,6 +1,6 @@
 <script>
 	import { Label } from "$lib/components/ui/label";
-	import { Textarea } from "$lib/components/ui/textarea";
+	import { Textarea } from "$lib/components/ui/textarea-highlighted";
 
 	export let slots;
 </script>
