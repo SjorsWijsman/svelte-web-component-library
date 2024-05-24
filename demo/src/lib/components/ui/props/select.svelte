@@ -5,10 +5,10 @@
 	export let options;
 	export let value;
 
+	if (!value && options) value = options[0];
+
 	let selected = { value };
 	$: value = selected.value;
-
-	if (!value && options) value = options[0];
 </script>
 
 {#if !options}
