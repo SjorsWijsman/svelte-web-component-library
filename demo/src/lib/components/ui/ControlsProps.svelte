@@ -15,7 +15,7 @@
 	{#each Object.keys(props) as name (name)}
 		{@const type = props[name].type}
 
-		{#if props[name]}
+		{#if name && props[name]}
 			<div class="py-3 flex flex-col gap-2">
 				<Label for={name} {name}></Label>
 				{#if type === "select"}

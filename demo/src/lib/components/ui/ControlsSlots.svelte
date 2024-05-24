@@ -7,10 +7,12 @@
 
 {#if slots && Object.keys(slots).length}
 	{#each Object.keys(slots) as name (name)}
-		<div class="py-3 flex flex-col gap-2">
-			<Label for={name}>{name}</Label>
-			<Textarea placeholder="Your slot content" id={name} bind:value={slots[name]} />
-		</div>
+		{#if name && slots[name]}
+			<div class="py-3 flex flex-col gap-2">
+				<Label {name}>{name}</Label>
+				<Textarea placeholder="Your slot content" id={name} bind:value={slots[name]} />
+			</div>
+		{/if}
 	{/each}
 {:else}
 	<p class="text-muted-foreground text-center mt-3">No slots configured.</p>
