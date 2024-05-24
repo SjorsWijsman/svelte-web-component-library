@@ -3,8 +3,7 @@ export const demo = {
 	props: {
 		color: {
 			type: "select",
-			options: ["red", "green", "blue"],
-			default: "red"
+			options: ["red", "green", "blue"]
 		}
 	},
 	slots: {

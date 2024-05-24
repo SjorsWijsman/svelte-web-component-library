@@ -5,13 +5,17 @@
 	import { Textarea } from "$lib/components/ui/textarea";
 
 	export let props;
+
+	Object.keys(props).forEach((prop) => {
+		props[prop].value = props[prop].default;
+	});
 </script>
 
 {#if props && Object.keys(props).length}
 	{#each Object.keys(props) as name (name)}
 		{@const type = props[name].type}
 
-		{#if props[name]}
+		{#if name && props[name]}
 			<div class="py-3 flex flex-col gap-2">
 				<Label for={name} {name}></Label>
 				{#if type === "select"}
