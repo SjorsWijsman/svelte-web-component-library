@@ -5,6 +5,10 @@
 	import { Textarea } from "$lib/components/ui/textarea";
 
 	export let props;
+
+	Object.keys(props).forEach((prop) => {
+		props[prop].value = props[prop].default;
+	});
 </script>
 
 {#if props && Object.keys(props).length}
