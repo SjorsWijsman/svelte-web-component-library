@@ -3,14 +3,14 @@
 	import * as Tabs from "$lib/components/ui/tabs/index.js";
 	import ControlsProps from "$lib/components/ui/ControlsProps.svelte";
 	import ControlsSlots from "$lib/components/ui/ControlsSlots.svelte";
-	import { selectedComponent } from "$store";
+	import { components, selectedComponent } from "$store";
 
 	let props, slots;
 
-	$: [props, slots] = [$selectedComponent?.props, $selectedComponent?.slots];
-
-	// Trigger store update
-	$: $selectedComponent = $selectedComponent;
+	$: [props, slots] = [
+		$components[$selectedComponent]?.props,
+		$components[$selectedComponent]?.slots
+	];
 </script>
 
 <Tabs.Root class="p-3 h-full">
@@ -30,12 +30,12 @@
 	</Tabs.List>
 	<Tabs.Content value="props" class="h-full">
 		<ScrollArea class="p-1 h-full w-full">
-			<ControlsProps bind:props />
+			<ControlsProps bind:props={$components[$selectedComponent].props} />
 		</ScrollArea>
 	</Tabs.Content>
 	<Tabs.Content value="slots" class="h-full">
 		<ScrollArea class="p-1 h-full w-full">
-			<ControlsSlots bind:slots />
+			<ControlsSlots bind:slots={$components[$selectedComponent].slots} />
 		</ScrollArea>
 	</Tabs.Content>
 </Tabs.Root>

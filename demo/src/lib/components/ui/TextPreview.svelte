@@ -1,13 +1,13 @@
 <script>
-	import { prefix, selectedComponent, componentText } from "$store";
+	import { prefix, components, selectedComponent, componentText } from "$store";
 	import { page } from "$app/stores";
 
 	let componentProps = "";
 	let componentSlots = "";
 
 	// Update content on prop/slot change
-	$: updatePropContent($selectedComponent?.props);
-	$: updateSlotContent($selectedComponent?.slots);
+	$: updatePropContent($components[$selectedComponent]?.props);
+	$: updateSlotContent($components[$selectedComponent]?.slots);
 
 	// Parse prop object to string to pass to component
 	function updatePropContent(props) {
@@ -22,7 +22,7 @@
 				}
 			}
 		}
-		$componentText = generateComponentText($selectedComponent);
+		$componentText = generateComponentText($components[$selectedComponent]);
 	}
 
 	// Parse slot object to string to pass inside component
@@ -33,7 +33,7 @@
 			if (slot === "default") componentSlots += slots[slot];
 			else componentSlots += `<span slot="${slot}">${slots[slot]}</span>`;
 		}
-		$componentText = generateComponentText($selectedComponent);
+		$componentText = generateComponentText($components[$selectedComponent]);
 	}
 
 	function generateComponentText(component) {

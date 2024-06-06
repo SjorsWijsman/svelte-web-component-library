@@ -1,7 +1,7 @@
 <script>
+	import { Button } from "$lib/components/ui/button/index.js";
 	import CopyIcon from "lucide-svelte/icons/copy";
 	import CopyIconSuccess from "lucide-svelte/icons/copy-check";
-	import { Button } from "$lib/components/ui/button/index.js";
 	import { componentText } from "$store";
 
 	let success;

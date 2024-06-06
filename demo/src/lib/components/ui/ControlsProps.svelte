@@ -6,6 +6,8 @@
 
 	export let props;
 
+	$: console.log(props);
+
 	Object.keys(props).forEach((prop) => {
 		props[prop].value = props[prop].default;
 	});
