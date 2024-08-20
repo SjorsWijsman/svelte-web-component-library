@@ -5,9 +5,10 @@
 	export let options;
 	export let value;
 
-	if (!value && options) value = options[0];
-
+	// Initiate selected value
 	let selected = { value };
+
+	// Update value on selected change
 	$: value = selected.value;
 </script>
 

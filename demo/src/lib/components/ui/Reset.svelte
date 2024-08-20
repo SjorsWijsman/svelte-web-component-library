@@ -11,7 +11,10 @@
 				...Object.fromEntries(
 					Object.entries($components[$selectedComponent].props).map(([key, values]) => [
 						key,
-						{ ...values, value: values.default }
+						{
+							...values,
+							value: !values.value && values.initial ? values.initial : values.value
+						}
 					])
 				)
 			}
