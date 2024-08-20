@@ -14,15 +14,17 @@
 	];
 
 	// Set initial value if value is empty and initial is provided
-	$: Object.keys(props).forEach((prop) => {
-		if (props[prop].value === undefined) {
-			if (props[prop].initial) {
-				props[prop].value = props[prop].initial;
-			} else {
-				props[prop].value = null;
+	$: if (props) {
+		Object.keys(props).forEach((prop) => {
+			if (props[prop].value === undefined) {
+				if (props[prop].initial) {
+					props[prop].value = props[prop].initial;
+				} else {
+					props[prop].value = null;
+				}
 			}
-		}
-	});
+		});
+	}
 </script>
 
 <Tabs.Root class="p-3 h-full">
