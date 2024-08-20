@@ -8,10 +8,10 @@
 	let props, slots;
 
 	// Update props and slots on selected component change
-	$: [props, slots] = [
-		$components[$selectedComponent]?.props,
-		$components[$selectedComponent]?.slots
-	];
+	selectedComponent.subscribe((component) => {
+		props = $components[component]?.props;
+		slots = $components[component]?.slots;
+	});
 
 	// Set initial value if value is empty and initial is provided
 	$: if (props) {
