@@ -3,6 +3,7 @@
 	import * as Tooltip from "$lib/components/ui/tooltip";
 	import LightSwitch from "$lib/components/ui/LightSwitch.svelte";
 	import Copy from "$lib/components/ui/Copy.svelte";
+	import Reset from "$lib/components/ui/Reset.svelte";
 </script>
 
 <div class="pb-4 flex items-center gap-2 w-full">
@@ -22,6 +23,14 @@
 			</Tooltip.Trigger>
 			<Tooltip.Content>
 				<p>Copy to clipboard</p>
+			</Tooltip.Content>
+		</Tooltip.Root>
+		<Tooltip.Root>
+			<Tooltip.Trigger>
+				<Reset />
+			</Tooltip.Trigger>
+			<Tooltip.Content>
+				<p>Reset component</p>
 			</Tooltip.Content>
 		</Tooltip.Root>
 	</div>

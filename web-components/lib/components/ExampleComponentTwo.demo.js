@@ -4,11 +4,11 @@ export const demo = {
 		color: {
 			type: "select",
 			options: ["red", "green", "blue"],
-			default: "blue"
+			initial: "blue"
 		},
 		underline: {
 			type: "boolean",
-			default: true
+			initial: true
 		}
 	},
 	slots: {

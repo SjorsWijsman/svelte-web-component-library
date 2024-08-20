@@ -13,14 +13,12 @@
 	$prefix = data.prefix;
 	$components = data.components;
 
-	$: $selectedComponent = $components[$page.params.component];
+	$: $selectedComponent = $page.params.component;
 </script>
 
 <svelte:head>
 	<title>
-		{$page.params.component
-			? `<${$prefix}-${$page.params.component} />`
-			: "Svelte Component Library"}
+		{$selectedComponent ? `<${$prefix}-${$selectedComponent} />` : "Svelte Component Library"}
 	</title>
 </svelte:head>
 

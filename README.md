@@ -62,7 +62,7 @@ export const demo = {
 		color: {
 			type: "select",
 			options: ["red", "green", "blue"],
-			default: "red"
+			initial: "red"
 		},
 		underline: {
 			type: "boolean"
@@ -98,14 +98,14 @@ _Other values will "fall through" and be passed as a type to an input field. You
 		state: {
 			type: "select",
 			options: ["primary", "secondary", "blue"],
-			default: "red"
+			initial: "red"
 		},
 		disabled: {
 			type: "boolean"
 		},
 		tooltip: {
 			type: "textarea",
-			default: "Tooltip content"
+			initial: "Tooltip content"
 		},
 	},
 ...

@@ -7,7 +7,7 @@
 
 {#if slots && Object.keys(slots).length}
 	{#each Object.keys(slots) as name (name)}
-		{#if name && slots[name]}
+		{#if name && slots[name] !== undefined}
 			<div class="py-3 flex flex-col gap-2">
 				<Label {name}>{name}</Label>
 				<Textarea placeholder="Your slot content" id={name} bind:value={slots[name]} />
