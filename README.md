@@ -81,14 +81,41 @@ Any created file with the `.demo.js` extension is automatically added to the `de
 ### Component Props
 
 Props defined in your Svelte component can be added to the demo environment by including them in the respective `.demo.js` file. To define a prop, add a new object to the `props` object. The key should match the prop name, but you can't use camelCase due to web component limitations. The prop can have a type and a default value. The following prop types are allowed:
-| Type | Allowed Value | Notes |
-|----------|---------------|-------------------------------------------------------------|
-| (default)| String | If type is undefined, it defaults to a regular input field. |
-| select | String | Select requires an additional `options` list. |
-| boolean | Boolean | |
-| textarea | String | |
 
-_Other values will "fall through" and be passed as a type to an input field. You can, for example, use `type: "color"` or `type: "password"`._
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>Type</th>
+    <th>Allowed Value</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td>(default)</td>
+    <td>String</td>
+    <td><i>If type is undefined, it defaults to a regular input field.</i></td>
+  </tr>
+  <tr>
+    <td>select</td>
+    <td>String</td>
+    <td><i>Select requires an additional `options` list.</i></td>
+  </tr>
+  <tr>
+    <td>boolean</td>
+    <td>Boolean</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>textarea</td>
+    <td>String</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <i>Other values will "fall through" and be passed as a type to an input field. You can, for example, use `type: "color"` or `type: "password"`.</i>
+    </td>
+  </tr>
+</table>
+
+*Example*:
 
 ```javascript
 // web-components/lib/components/MyComponent.demo.js
@@ -124,6 +151,16 @@ Slots are defined similarly to props, with the key acting as the title of the sl
 	}
 ...
 ```
+
+<br>
+
+## Development
+
+### Using NPM packages
+
+As imported NPM packages are used by both the web-component library (`/web-components`) and the preview demo environment (`/demo`), packages used inside web components should be installed to the root folder. The root `package.json` is intentionally left empty, except for the required vite dependency. 
+
+Packages used only in the demo environment should, logically, only be installed to the `/demo` folder. The `web-components` folder only includes the necessary development dependencies.
 
 <br>
 
