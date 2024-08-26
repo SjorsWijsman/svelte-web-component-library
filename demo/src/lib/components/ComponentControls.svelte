@@ -8,21 +8,23 @@
 	let props, slots;
 
 	// Update props and slots on selected component change
-	$: [props, slots] = [
-		$components[$selectedComponent]?.props,
-		$components[$selectedComponent]?.slots
-	];
+	selectedComponent.subscribe((component) => {
+		props = $components[component]?.props;
+		slots = $components[component]?.slots;
+	});
 
 	// Set initial value if value is empty and initial is provided
-	$: Object.keys(props).forEach((prop) => {
-		if (props[prop].value === undefined) {
-			if (props[prop].initial) {
-				props[prop].value = props[prop].initial;
-			} else {
-				props[prop].value = null;
+	$: if (props) {
+		Object.keys(props).forEach((prop) => {
+			if (props[prop].value === undefined) {
+				if (props[prop].initial) {
+					props[prop].value = props[prop].initial;
+				} else {
+					props[prop].value = null;
+				}
 			}
-		}
-	});
+		});
+	}
 </script>
 
 <Tabs.Root class="p-3 h-full">

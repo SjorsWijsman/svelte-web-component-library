@@ -14,14 +14,19 @@ components = Object.fromEntries(
 // Suffix props with a random number to avoid conflicts
 components = Object.fromEntries(
 	Object.entries(components).map(([key, value]) => {
-		value.props = Object.fromEntries(
-			Object.entries(value.props).map(([key, value]) => {
-				// If it already contains a suffix, don't add another one
-				if (/\_\d{6}$/.test(key)) return [key, value];
-				const randomSuffix = String(Math.floor(Math.random() * 1000000)).padStart(6, "0");
-				return [`${key}_${randomSuffix}`, value];
-			})
-		);
+		if (value.props) {
+			value.props = Object.fromEntries(
+				Object.entries(value.props).map(([key, value]) => {
+					// If it already contains a suffix, don't add another one
+					if (/\_\d{6}$/.test(key)) return [key, value];
+					const randomSuffix = String(Math.floor(Math.random() * 1000000)).padStart(
+						6,
+						"0"
+					);
+					return [`${key}_${randomSuffix}`, value];
+				})
+			);
+		}
 		return [key, value];
 	})
 );
